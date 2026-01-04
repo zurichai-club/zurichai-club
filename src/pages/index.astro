@@ -1,0 +1,373 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const meetups = (await getCollection("meetups")).sort(
+  (a, b) => a.data.date.valueOf() - b.data.date.valueOf()
+);
+
+const upcomingMeetups = meetups.filter(
+  (meetup) => meetup.data.status === "upcoming" || meetup.data.status === "sold_out"
+);
+
+const nextMeetup = upcomingMeetups[0] ?? meetups[0];
+const previousMeetups = nextMeetup
+  ? meetups.filter((meetup) => meetup.slug !== nextMeetup.slug)
+  : meetups;
+const archiveMeetups = [...previousMeetups].sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const formatDateShort = (date) =>
+  new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" }).format(date);
+
+const formatDateLong = (date) =>
+  new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric"
+  }).format(date);
+
+const marqueeLabel = nextMeetup
+  ? `NEXT EVENT: ${formatDateShort(nextMeetup.data.date)} // ${nextMeetup.data.title.toUpperCase()} // ${nextMeetup.data.location.toUpperCase()} //`
+  : "NO EVENTS SCHEDULED //";
+
+const marqueeItems = Array.from({ length: 12 }, () => marqueeLabel);
+
+const nextSpeakerLine = nextMeetup
+  ? nextMeetup.data.speakers.length > 0
+    ? nextMeetup.data.speakers.map((speaker) => speaker.name).join(" + ")
+    : nextMeetup.data.speaker
+  : "";
+const nextMeetupRsvp = nextMeetup?.data.rsvpUrl;
+---
+
+<BaseLayout>
+  <header class="hero">
+    <div class="hero__texture"></div>
+    <div class="container hero__content">
+      <div class="hero__badge">
+        <div class="beta-tag">BETA_V.0.9</div>
+      </div>
+      <h1 class="hero__title">
+        AI_MEETUP
+        <br />
+        <span class="text-stroke">COLLECTIVE</span>
+        <span class="hero__glow"></span>
+      </h1>
+      <div class="hero__intro">
+        <p class="hero__lead mono uppercase">
+          Raw knowledge sharing. <br />
+          No corporate fluff. <br />
+          Just code &amp; models.
+        </p>
+        <a class="button button--primary" href="#newsletter">
+          Join the Cult
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  {nextMeetup && (
+    <section class="next-meetup" aria-labelledby="next-meetup-title">
+      <div class="container next-meetup__inner">
+        <div class="next-meetup__info">
+          <div class="next-meetup__kicker mono uppercase">Next meetup</div>
+          <div class="tag-group">
+            {nextMeetup.data.tags.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+            {nextMeetup.data.status === "sold_out" && (
+              <span class="tag tag--sold">SOLD OUT</span>
+            )}
+          </div>
+          <h2 id="next-meetup-title" class="next-meetup__title">
+            {nextMeetup.data.title}
+          </h2>
+          <p class="next-meetup__why">{nextMeetup.data.why}</p>
+          <div class="next-meetup__meta">
+            <div>
+              <div class="next-meetup__label">Date</div>
+              <div class="next-meetup__value">{formatDateLong(nextMeetup.data.date)}</div>
+            </div>
+            <div>
+              <div class="next-meetup__label">Time</div>
+              <div class="next-meetup__value">{nextMeetup.data.time}</div>
+            </div>
+            <div>
+              <div class="next-meetup__label">Location</div>
+              <div class="next-meetup__value">{nextMeetup.data.location}</div>
+            </div>
+            <div>
+              <div class="next-meetup__label">Speakers</div>
+              <div class="next-meetup__value">{nextSpeakerLine}</div>
+            </div>
+          </div>
+          <div class="next-meetup__actions">
+            {nextMeetup.data.status === "upcoming" && nextMeetupRsvp && (
+              <a class="button button--accent" href={nextMeetupRsvp}>
+                RSVP
+              </a>
+            )}
+            <a
+              class="button button--invert"
+              href={`/calendar/${nextMeetup.slug}.ics`}
+              download
+            >
+              Add to Calendar
+            </a>
+          </div>
+        </div>
+        <div class="next-meetup__speakers">
+          <div class="next-meetup__section-title mono uppercase">Speaker lineup</div>
+          {nextMeetup.data.speakers.length > 0 ? (
+            <div class="speaker-grid">
+              {nextMeetup.data.speakers.map((speaker) => (
+                <div class="speaker-card">
+                  <img
+                    class="speaker-card__photo"
+                    src={speaker.photo}
+                    alt={`${speaker.name} headshot`}
+                    loading="lazy"
+                  />
+                  <div class="speaker-card__body">
+                    <div class="speaker-card__name">{speaker.name}</div>
+                    <div class="speaker-card__role">{speaker.role}</div>
+                    {speaker.companyUrl ? (
+                      <a
+                        class="speaker-card__company"
+                        href={speaker.companyUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <span>{speaker.company}</span>
+                      </a>
+                    ) : (
+                      <div class="speaker-card__company">
+                        <span>{speaker.company}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p class="next-meetup__tba">Speakers to be announced.</p>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="ticker" aria-label="Next event ticker">
+    <div class="ticker__track">
+      {marqueeItems.map((item) => (
+        <span class="ticker__item">{item}</span>
+      ))}
+    </div>
+  </section>
+
+  <section class="main-grid">
+    <div class="main-grid__inner">
+      <aside class="manifesto">
+        <div class="manifesto__sticky">
+          <h2>Manifesto</h2>
+          <ul class="manifesto__list">
+            <li class="manifesto__item">
+              <span class="manifesto__index">01.</span>
+              <p>We prioritize raw engineering over polished slides.</p>
+            </li>
+            <li class="manifesto__item">
+              <span class="manifesto__index">02.</span>
+              <p>Open source or go home.</p>
+            </li>
+            <li class="manifesto__item">
+              <span class="manifesto__index">03.</span>
+              <p>Brutal honesty in feedback.</p>
+            </li>
+          </ul>
+
+          <div class="news-card" aria-live="polite">
+            <div class="news-card__overlay"></div>
+            <div class="news-card__content">
+              <div class="news-card__title">
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 19h8"></path>
+                  <path d="m4 17 6-6-6-6"></path>
+                </svg>
+                <span>NEWS_FEED</span>
+              </div>
+              <p class="news-card__body">
+                &gt; New venue acquired.<br />
+                &gt; Server upgrade complete.<br />
+                &gt; Pizza budget increased by 200%.
+              </p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="events">
+        <div class="events__header">
+          <h2 class="events__header-title">
+            <span class="events__pulse"></span>
+            Previous_Meetups
+          </h2>
+          <div class="mono">ARCHIVE</div>
+        </div>
+
+        {archiveMeetups.length > 0 ? (
+          archiveMeetups.map((meetup) => (
+            <article class="event-card" data-status={meetup.data.status}>
+              <div class="event-card__top">
+                <div>
+                  <div class="tag-group">
+                    {meetup.data.tags.map((tag) => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                    {meetup.data.status === "sold_out" && (
+                      <span class="tag tag--sold">SOLD OUT</span>
+                    )}
+                    {meetup.data.status === "past" && <span class="tag tag--past">PAST</span>}
+                  </div>
+                  <h3 class="event-card__title">
+                    <a href={`/meetups/${meetup.slug}/`}>{meetup.data.title}</a>
+                  </h3>
+                </div>
+                <div class="date-badge">
+                  <div class="date-badge__date">{formatDateShort(meetup.data.date)}</div>
+                  <div class="date-badge__time">{meetup.data.time}</div>
+                </div>
+              </div>
+
+              <div class="event-card__meta">
+                <div class="meta-item">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  <span>{meetup.data.location}</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-dot"></span>
+                  <span>{meetup.data.speaker}</span>
+                </div>
+              </div>
+
+              <p class="event-card__why">{meetup.data.why}</p>
+              <p class="event-card__quote">"{meetup.data.quote}"</p>
+
+              {meetup.data.speakers.length > 0 && (
+                <div class="event-card__speakers">
+                  {meetup.data.speakers.map((speaker) => (
+                    <div class="speaker-mini">
+                      <img
+                        class="speaker-mini__photo"
+                        src={speaker.photo}
+                        alt={`${speaker.name} headshot`}
+                        loading="lazy"
+                      />
+                      <span class="speaker-mini__name">{speaker.name}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <div class="event-card__action">
+                <a class="button button--accent" href={`/meetups/${meetup.slug}/`}>
+                  Details
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14"></path>
+                    <path d="M12 5v14"></path>
+                  </svg>
+                </a>
+              </div>
+              <div class="event-card__texture"></div>
+            </article>
+          ))
+        ) : (
+          <div class="event-card">
+            <p class="event-card__why">No previous meetups yet. Check back after the next event.</p>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <section id="newsletter" class="cta">
+    <div class="cta__glow"></div>
+    <div class="cta__glow cta__glow--white"></div>
+    <div class="cta__inner">
+      <h2 class="cta__title">
+        Don&apos;t Miss The <br />
+        Singularity
+      </h2>
+      <p class="cta__subtitle">Subscribe to our low-frequency, high-signal newsletter.</p>
+      <form class="newsletter-form">
+        <input type="email" name="email" placeholder="EMAIL_ADDRESS" required />
+        <button class="button button--invert" type="submit">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div>
+        <div class="site-footer__brand">AI_MEETUP</div>
+        <p class="site-footer__meta">
+          &copy; 2025 // BRUTALIST_DESIGN_SYSTEM<br />
+          EST. ZURICH // WORLDWIDE
+        </p>
+      </div>
+      <div class="site-footer__links">
+        <a href="#">Twitter</a>
+        <a href="#">GitHub</a>
+        <a href="#">Discord</a>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>
