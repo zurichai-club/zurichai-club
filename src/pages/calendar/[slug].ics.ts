@@ -48,7 +48,8 @@ export async function GET({
   const descriptionParts = [meetup.data.why, meetup.data.quote].filter(Boolean);
   const description = descriptionParts.join("\n\n");
   const rsvpUrl = meetup.data.rsvpUrl ?? `/meetups/${meetup.slug}/`;
-  const resolvedUrl = site && rsvpUrl.startsWith(\"/\") ? new URL(rsvpUrl, site).toString() : rsvpUrl;
+  const resolvedUrl =
+    site && rsvpUrl.startsWith("/") ? new URL(rsvpUrl, site).toString() : rsvpUrl;
 
   const lines = [
     "BEGIN:VCALENDAR",
