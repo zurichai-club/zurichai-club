@@ -17,6 +17,7 @@ const previousMeetups = nextMeetup
 const archiveMeetups = [...previousMeetups].sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
+const latestMeetup = meetups[meetups.length - 1];
 
 const formatDateShort = (date) =>
   new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" }).format(date);
@@ -28,8 +29,8 @@ const formatDateLong = (date) =>
     year: "numeric"
   }).format(date);
 
-const marqueeLabel = nextMeetup
-  ? `NEXT EVENT: ${formatDateShort(nextMeetup.data.date)} // ${nextMeetup.data.title.toUpperCase()} // ${nextMeetup.data.location.toUpperCase()} //`
+const marqueeLabel = latestMeetup
+  ? `LATEST EVENT: ${formatDateShort(latestMeetup.data.date)} // ${latestMeetup.data.title.toUpperCase()} // ${latestMeetup.data.location.toUpperCase()} //`
   : "NO EVENTS SCHEDULED //";
 
 const marqueeItems = Array.from({ length: 12 }, () => marqueeLabel);
@@ -81,6 +82,14 @@ const nextMeetupRsvp = nextMeetup?.data.rsvpUrl;
       </div>
     </div>
   </header>
+
+  <section class="ticker" aria-label="Next event ticker">
+    <div class="ticker__track">
+      {marqueeItems.map((item) => (
+        <span class="ticker__item">{item}</span>
+      ))}
+    </div>
+  </section>
 
   {nextMeetup && (
     <section class="next-meetup" aria-labelledby="next-meetup-title">
@@ -172,14 +181,6 @@ const nextMeetupRsvp = nextMeetup?.data.rsvpUrl;
       </div>
     </section>
   )}
-
-  <section class="ticker" aria-label="Next event ticker">
-    <div class="ticker__track">
-      {marqueeItems.map((item) => (
-        <span class="ticker__item">{item}</span>
-      ))}
-    </div>
-  </section>
 
   <section class="main-grid">
     <div class="main-grid__inner">
@@ -365,8 +366,7 @@ const nextMeetupRsvp = nextMeetup?.data.rsvpUrl;
       </div>
       <div class="site-footer__links">
         <a href="#">Twitter</a>
-        <a href="#">GitHub</a>
-        <a href="#">Discord</a>
+        <a href="#">LinkedIn</a>
       </div>
     </div>
   </footer>

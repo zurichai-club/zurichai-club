@@ -387,6 +387,7 @@ textarea {
 .main-grid {
   width: min(1200px, 92vw);
   margin: 0 auto;
+  border-top: var(--border);
   border-left: var(--border);
   border-right: var(--border);
   background: #fff;
@@ -538,6 +539,10 @@ textarea {
   border-bottom: var(--border);
   transition: background 0.2s ease, padding 0.2s ease;
   overflow: hidden;
+}
+
+.events .event-card:last-child {
+  border-bottom: 0;
 }
 
 .event-card:hover {
