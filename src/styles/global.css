@@ -361,7 +361,7 @@ textarea {
   display: inline-flex;
   gap: 2rem;
   padding: 0.8rem 1rem;
-  animation: marquee 20s linear infinite;
+  animation: marquee 40s linear infinite;
 }
 
 .ticker__item {
