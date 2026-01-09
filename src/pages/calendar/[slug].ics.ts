@@ -1,6 +1,7 @@
 import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
 import type { APIContext } from "astro";
+
+export const prerender = true;
 
 const pad = (value: number) => String(value).padStart(2, "0");
 
@@ -33,23 +34,32 @@ const buildStartDate = (date: Date, time: string) => {
 export async function getStaticPaths() {
   const meetups = await getCollection("meetups");
   return meetups.map((meetup) => ({
-    params: { slug: meetup.slug },
-    props: { meetup }
+    params: { slug: meetup.slug }
   }));
 }
 
-export async function GET({
-  props,
-  site
-}: APIContext<{ meetup: CollectionEntry<"meetups"> }>) {
-  const { meetup } = props;
+export async function GET({ params, site }: APIContext) {
+  const slug = params.slug;
+  if (!slug) {
+    return new Response("Not found", { status: 404 });
+  }
+
+  const meetups = await getCollection("meetups");
+  const meetup = meetups.find((entry) => entry.slug === slug);
+  if (!meetup) {
+    return new Response("Not found", { status: 404 });
+  }
+
   const start = buildStartDate(meetup.data.date, meetup.data.time);
   const end = new Date(start.getTime() + 2 * 60 * 60 * 1000);
   const descriptionParts = [meetup.data.why, meetup.data.quote].filter(Boolean);
   const description = descriptionParts.join("\n\n");
   const rsvpUrl = meetup.data.rsvpUrl ?? `/meetups/${meetup.slug}/`;
+  const baseUrl = site ? new URL(import.meta.env.BASE_URL, site) : null;
   const resolvedUrl =
-    site && rsvpUrl.startsWith("/") ? new URL(rsvpUrl, site).toString() : rsvpUrl;
+    baseUrl && rsvpUrl.startsWith("/")
+      ? new URL(rsvpUrl.slice(1), baseUrl).toString()
+      : rsvpUrl;
 
   const lines = [
     "BEGIN:VCALENDAR",

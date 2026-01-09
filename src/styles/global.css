@@ -984,13 +984,24 @@ textarea {
     grid-template-columns: 1fr;
   }
 
+  .main-grid {
+    overflow-x: hidden;
+  }
+
   .manifesto {
+    min-width: 0;
     border-right: none;
     border-bottom: var(--border);
   }
 
+  .events {
+    min-width: 0;
+  }
+
   .events__header {
     position: relative;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .event-card {

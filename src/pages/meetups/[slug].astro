@@ -25,6 +25,7 @@ const isPast = meetup.data.status === "past";
 const rsvpUrl = meetup.data.rsvpUrl;
 const currentPath = Astro.url.pathname;
 const showRsvp = rsvpUrl && rsvpUrl !== currentPath;
+const calendarHref = `${import.meta.env.BASE_URL}calendar/${meetup.slug}.ics`;
 ---
 
 <BaseLayout title={`${meetup.data.title} | AI Meetup Collective`}>
@@ -69,7 +70,7 @@ const showRsvp = rsvpUrl && rsvpUrl !== currentPath;
             </a>
           )}
           {!isPast && (
-            <a class="button button--invert" href={`/calendar/${meetup.slug}.ics`} download>
+            <a class="button button--invert" href={calendarHref} download>
               Add to Calendar
             </a>
           )}

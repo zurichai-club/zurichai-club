@@ -41,6 +41,7 @@ const nextSpeakerLine = nextMeetup
     : nextMeetup.data.speaker
   : "";
 const nextMeetupRsvp = nextMeetup?.data.rsvpUrl;
+const calendarHref = (slug) => `${import.meta.env.BASE_URL}calendar/${slug}.ics`;
 ---
 
 <BaseLayout>
@@ -134,7 +135,7 @@ const nextMeetupRsvp = nextMeetup?.data.rsvpUrl;
             )}
             <a
               class="button button--invert"
-              href={`/calendar/${nextMeetup.slug}.ics`}
+              href={calendarHref(nextMeetup.slug)}
               download
             >
               Add to Calendar
