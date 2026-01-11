@@ -42,6 +42,8 @@ const nextSpeakerLine = nextMeetup
   : "";
 const nextMeetupRsvp = nextMeetup?.data.rsvpUrl;
 const calendarHref = (slug) => `${import.meta.env.BASE_URL}calendar/${slug}.ics`;
+const meetupHref = (slug) => `${import.meta.env.BASE_URL}meetups/${slug}/`;
+const inProgressHref = `${import.meta.env.BASE_URL}in-progress/`;
 ---
 
 <BaseLayout>
@@ -63,8 +65,8 @@ const calendarHref = (slug) => `${import.meta.env.BASE_URL}calendar/${slug}.ics`
           No corporate fluff. <br />
           Just code &amp; models.
         </p>
-        <a class="button button--primary" href="#newsletter">
-          Join the Cult
+        <a class="button button--accent" href="https://www.meetup.com/zurich-ai-meetup/">
+          Join the Club
           <svg
             width="22"
             height="22"
@@ -257,7 +259,7 @@ const calendarHref = (slug) => `${import.meta.env.BASE_URL}calendar/${slug}.ics`
                     {meetup.data.status === "past" && <span class="tag tag--past">PAST</span>}
                   </div>
                   <h3 class="event-card__title">
-                    <a href={`/meetups/${meetup.slug}/`}>{meetup.data.title}</a>
+                    <a href={meetupHref(meetup.slug)}>{meetup.data.title}</a>
                   </h3>
                 </div>
                 <div class="date-badge">
@@ -310,7 +312,7 @@ const calendarHref = (slug) => `${import.meta.env.BASE_URL}calendar/${slug}.ics`
               )}
 
               <div class="event-card__action">
-                <a class="button button--accent" href={`/meetups/${meetup.slug}/`}>
+                <a class="button button--accent" href={meetupHref(meetup.slug)}>
                   Details
                   <svg
                     width="18"
@@ -349,7 +351,7 @@ const calendarHref = (slug) => `${import.meta.env.BASE_URL}calendar/${slug}.ics`
         Singularity
       </h2>
       <p class="cta__subtitle">Subscribe to our low-frequency, high-signal newsletter.</p>
-      <form class="newsletter-form">
+      <form class="newsletter-form" action={inProgressHref} method="get">
         <input type="email" name="email" placeholder="EMAIL_ADDRESS" required />
         <button class="button button--invert" type="submit">Submit</button>
       </form>

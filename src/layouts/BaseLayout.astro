@@ -43,6 +43,115 @@ const ogImageUrl = new URL("og-image.png", baseUrl);
     />
   </head>
   <body>
+    <canvas class="cursor-trail" aria-hidden="true"></canvas>
     <slot />
+    <script is:inline>
+      (() => {
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+        if (reduceMotion || coarsePointer) {
+          return;
+        }
+
+        const canvas = document.querySelector(".cursor-trail");
+        if (!canvas) {
+          return;
+        }
+
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+          return;
+        }
+
+        const pixelSize = 10;
+        const fadeDuration = 500;
+        const delay = 0;
+        const pixels = new Map();
+
+        let rafId = null;
+
+        const trailColor =
+          getComputedStyle(document.documentElement)
+            .getPropertyValue("--cursor-trail-color")
+            .trim() || "#ff1f1f";
+
+        const resize = () => {
+          const width = window.innerWidth;
+          const height = window.innerHeight;
+          canvas.width = width;
+          canvas.height = height;
+          canvas.style.width = `${width}px`;
+          canvas.style.height = `${height}px`;
+          ctx.imageSmoothingEnabled = false;
+        };
+
+        const draw = () => {
+          const now = Date.now();
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          pixels.forEach((pixel, key) => {
+            const elapsed = now - pixel.fadeStart - delay;
+            if (elapsed < 0) {
+              return;
+            }
+            if (elapsed >= fadeDuration) {
+              pixels.delete(key);
+              return;
+            }
+            const opacity = 1 - elapsed / fadeDuration;
+            ctx.globalAlpha = opacity;
+            ctx.fillStyle = trailColor;
+            ctx.fillRect(
+              pixel.x * pixelSize,
+              pixel.y * pixelSize,
+              pixelSize,
+              pixelSize
+            );
+          });
+          ctx.globalAlpha = 1;
+          if (pixels.size > 0) {
+            rafId = requestAnimationFrame(draw);
+          } else {
+            rafId = null;
+          }
+        };
+
+        const handleMouseMove = (event) => {
+          const rect = canvas.getBoundingClientRect();
+          const x = Math.floor((event.clientX - rect.left) / pixelSize);
+          const y = Math.floor((event.clientY - rect.top) / pixelSize);
+          const maxX = Math.ceil(canvas.width / pixelSize);
+          const maxY = Math.ceil(canvas.height / pixelSize);
+          if (x < 0 || y < 0 || x >= maxX || y >= maxY) {
+            return;
+          }
+          const key = `${x}-${y}`;
+          pixels.set(key, { x, y, fadeStart: Date.now() });
+          if (!rafId) {
+            rafId = requestAnimationFrame(draw);
+          }
+        };
+
+        const resetTrail = () => {
+          pixels.clear();
+        };
+
+        resize();
+
+        const finePointer = window.matchMedia("(pointer: fine)").matches;
+        if (finePointer) {
+          window.addEventListener("mousemove", handleMouseMove, { passive: true });
+        }
+        window.addEventListener("resize", () => {
+          resize();
+          resetTrail();
+        });
+        window.addEventListener("blur", resetTrail);
+        window.addEventListener("visibilitychange", () => {
+          if (document.hidden) {
+            resetTrail();
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
