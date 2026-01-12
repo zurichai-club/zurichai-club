@@ -9,9 +9,10 @@ tags:
   - Social
   - Beer
 status: upcoming
+tbd: true
 why: "LLMs are moving fast. This meetup keeps us grounded in real engineering tradeoffs and what actually ships."
 quote: "Deep dive into transformer architectures while consuming fermented beverages. No suits allowed."
-rsvpUrl: "/meetups/llm-beer/"
+rsvpUrl: "https://www.meetup.com/zurich-ai-meetup/"
 speakers:
   - name: "Dr. Sarah Connor"
     role: "Applied Research Lead"

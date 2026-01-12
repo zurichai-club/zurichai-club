@@ -10,6 +10,7 @@ const meetups = defineCollection({
     speaker: z.string(),
     tags: z.array(z.string()).default([]),
     status: z.enum(["upcoming", "sold_out", "past"]).default("upcoming"),
+    tbd: z.boolean().optional().default(false),
     why: z.string(),
     quote: z.string(),
     rsvpUrl: z.string().optional(),

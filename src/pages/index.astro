@@ -40,6 +40,7 @@ const nextSpeakerLine = nextMeetup
     ? nextMeetup.data.speakers.map((speaker) => speaker.name).join(" + ")
     : nextMeetup.data.speaker
   : "";
+const nextMeetupIsTbd = Boolean(nextMeetup?.data.tbd);
 const nextMeetupRsvp = nextMeetup?.data.rsvpUrl;
 const calendarHref = (slug) => `${import.meta.env.BASE_URL}calendar/${slug}.ics`;
 const meetupHref = (slug) => `${import.meta.env.BASE_URL}meetups/${slug}/`;
@@ -54,7 +55,7 @@ const inProgressHref = `${import.meta.env.BASE_URL}in-progress/`;
         <div class="beta-tag">BETA_V.0.9</div>
       </div>
       <h1 class="hero__title">
-        AI_MEETUP
+        ZÜRICH_AI
         <br />
         <span class="text-stroke">COLLECTIVE</span>
         <span class="hero__glow"></span>
@@ -100,33 +101,45 @@ const inProgressHref = `${import.meta.env.BASE_URL}in-progress/`;
         <div class="next-meetup__info">
           <div class="next-meetup__kicker mono uppercase">Next meetup</div>
           <div class="tag-group">
-            {nextMeetup.data.tags.map((tag) => (
-              <span class="tag">{tag}</span>
-            ))}
-            {nextMeetup.data.status === "sold_out" && (
+            {nextMeetupIsTbd ? (
+              <span class="tag">TBD</span>
+            ) : (
+              nextMeetup.data.tags.map((tag) => <span class="tag">{tag}</span>)
+            )}
+            {!nextMeetupIsTbd && nextMeetup.data.status === "sold_out" && (
               <span class="tag tag--sold">SOLD OUT</span>
             )}
           </div>
           <h2 id="next-meetup-title" class="next-meetup__title">
-            {nextMeetup.data.title}
+            {nextMeetupIsTbd ? "TBD" : nextMeetup.data.title}
           </h2>
-          <p class="next-meetup__why">{nextMeetup.data.why}</p>
+          <p class="next-meetup__why">
+            {nextMeetupIsTbd ? "TBD" : nextMeetup.data.why}
+          </p>
           <div class="next-meetup__meta">
             <div>
               <div class="next-meetup__label">Date</div>
-              <div class="next-meetup__value">{formatDateLong(nextMeetup.data.date)}</div>
+              <div class="next-meetup__value">
+                {nextMeetupIsTbd ? "TBD" : formatDateLong(nextMeetup.data.date)}
+              </div>
             </div>
             <div>
               <div class="next-meetup__label">Time</div>
-              <div class="next-meetup__value">{nextMeetup.data.time}</div>
+              <div class="next-meetup__value">
+                {nextMeetupIsTbd ? "TBD" : nextMeetup.data.time}
+              </div>
             </div>
             <div>
               <div class="next-meetup__label">Location</div>
-              <div class="next-meetup__value">{nextMeetup.data.location}</div>
+              <div class="next-meetup__value">
+                {nextMeetupIsTbd ? "TBD" : nextMeetup.data.location}
+              </div>
             </div>
             <div>
               <div class="next-meetup__label">Speakers</div>
-              <div class="next-meetup__value">{nextSpeakerLine}</div>
+              <div class="next-meetup__value">
+                {nextMeetupIsTbd ? "TBD" : nextSpeakerLine}
+              </div>
             </div>
           </div>
           <div class="next-meetup__actions">
@@ -135,18 +148,22 @@ const inProgressHref = `${import.meta.env.BASE_URL}in-progress/`;
                 RSVP
               </a>
             )}
-            <a
-              class="button button--invert"
-              href={calendarHref(nextMeetup.slug)}
-              download
-            >
-              Add to Calendar
-            </a>
+            {!nextMeetupIsTbd && (
+              <a
+                class="button button--invert"
+                href={calendarHref(nextMeetup.slug)}
+                download
+              >
+                Add to Calendar
+              </a>
+            )}
           </div>
         </div>
         <div class="next-meetup__speakers">
           <div class="next-meetup__section-title mono uppercase">Speaker lineup</div>
-          {nextMeetup.data.speakers.length > 0 ? (
+          {nextMeetupIsTbd ? (
+            <p class="next-meetup__tba">TBD.</p>
+          ) : nextMeetup.data.speakers.length > 0 ? (
             <div class="speaker-grid">
               {nextMeetup.data.speakers.map((speaker) => (
                 <div class="speaker-card">
@@ -193,15 +210,15 @@ const inProgressHref = `${import.meta.env.BASE_URL}in-progress/`;
           <ul class="manifesto__list">
             <li class="manifesto__item">
               <span class="manifesto__index">01.</span>
-              <p>We prioritize raw engineering over polished slides.</p>
+              <p>Substance beats hype.</p>
             </li>
             <li class="manifesto__item">
               <span class="manifesto__index">02.</span>
-              <p>Open source or go home.</p>
+              <p>Builders from startups to enterprises.</p>
             </li>
             <li class="manifesto__item">
               <span class="manifesto__index">03.</span>
-              <p>Brutal honesty in feedback.</p>
+              <p>Honest critique, real growth.</p>
             </li>
           </ul>
 
@@ -226,9 +243,8 @@ const inProgressHref = `${import.meta.env.BASE_URL}in-progress/`;
                 <span>NEWS_FEED</span>
               </div>
               <p class="news-card__body">
-                &gt; New venue acquired.<br />
-                &gt; Server upgrade complete.<br />
-                &gt; Pizza budget increased by 200%.
+                &gt; New location locked in.<br />
+                &gt; New website, fresh look.
               </p>
             </div>
           </div>
@@ -362,14 +378,11 @@ const inProgressHref = `${import.meta.env.BASE_URL}in-progress/`;
     <div class="container site-footer__inner">
       <div>
         <div class="site-footer__brand">AI_MEETUP</div>
-        <p class="site-footer__meta">
-          &copy; 2025 // BRUTALIST_DESIGN_SYSTEM<br />
-          EST. ZURICH // WORLDWIDE
-        </p>
+        <p class="site-footer__meta">EST. ZÜRICH 2024</p>
       </div>
       <div class="site-footer__links">
-        <a href="#">Twitter</a>
-        <a href="#">LinkedIn</a>
+        <a href="https://x.com/zurichaiclub">Twitter</a>
+        <a href="https://www.linkedin.com/company/zürich-ai-meetup/">LinkedIn</a>
       </div>
     </div>
   </footer>

@@ -5,14 +5,45 @@
   --accent-dark: #c40000;
   --muted: #f6f6f6;
   --grid: #e5e5e5;
+  --surface: #ffffff;
+  --surface-rgb: 255 255 255;
+  --ink: #000000;
+  --ink-rgb: 0 0 0;
+  --ink-contrast: #ffffff;
+  --ink-contrast-rgb: 255 255 255;
+  --border-color: #000000;
+  --shadow-color: #000000;
+  --text-muted: #444444;
+  --text-muted-strong: #bdbdbd;
   --cursor-trail-color: #ff1f1f;
-  --shadow: 8px 8px 0 #000;
-  --shadow-sm: 4px 4px 0 #000;
-  --border: 4px solid #000;
-  --border-thin: 2px solid #000;
+  --shadow: 8px 8px 0 var(--shadow-color);
+  --shadow-sm: 4px 4px 0 var(--shadow-color);
+  --border: 4px solid var(--border-color);
+  --border-thin: 2px solid var(--border-color);
   --font-sans: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
   --font-serif: "Libre Baskerville", serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0b0b;
+    --fg: #f2f2f2;
+    --muted: #151515;
+    --grid: #1f1f1f;
+    --surface: #141414;
+    --surface-rgb: 20 20 20;
+    --ink: #f2f2f2;
+    --ink-rgb: 242 242 242;
+    --ink-contrast: #0b0b0b;
+    --ink-contrast-rgb: 11 11 11;
+    --border-color: #f2f2f2;
+    --shadow-color: #000000;
+    --text-muted: #c2c2c2;
+    --text-muted-strong: #9b9b9b;
+    color-scheme: dark;
+  }
 }
 
 * {
@@ -87,25 +118,25 @@ textarea {
 }
 
 .text-stroke {
-  -webkit-text-stroke: 2px #000;
+  -webkit-text-stroke: 2px var(--ink);
   color: transparent;
 }
 
 .brutal-border {
   border: var(--border);
   box-shadow: var(--shadow);
-  background: #fff;
+  background: var(--surface);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .brutal-border:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 10px 10px 0 #000;
+  box-shadow: 10px 10px 0 var(--shadow-color);
 }
 
 .brutal-border:active {
   transform: translate(2px, 2px);
-  box-shadow: 4px 4px 0 #000;
+  box-shadow: 4px 4px 0 var(--shadow-color);
 }
 
 .button {
@@ -124,8 +155,8 @@ textarea {
 }
 
 .button--primary {
-  background: #000;
-  color: #fff;
+  background: var(--ink);
+  color: var(--ink-contrast);
 }
 
 .button--accent {
@@ -134,24 +165,24 @@ textarea {
 }
 
 .button--invert {
-  background: #fff;
-  color: #000;
+  background: var(--surface);
+  color: var(--ink);
 }
 
 .button:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 #000;
+  box-shadow: 6px 6px 0 var(--shadow-color);
 }
 
 .button:active {
   transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0 #000;
+  box-shadow: 2px 2px 0 var(--shadow-color);
 }
 
 .hero {
   position: relative;
   border-bottom: var(--border);
-  background: #fff;
+  background: var(--surface);
   overflow: hidden;
 }
 
@@ -160,8 +191,8 @@ textarea {
   inset: 0;
   background-image: repeating-linear-gradient(
       135deg,
-      rgba(0, 0, 0, 0.2) 0,
-      rgba(0, 0, 0, 0.2) 2px,
+      rgba(var(--ink-rgb), 0.2) 0,
+      rgba(var(--ink-rgb), 0.2) 2px,
       transparent 2px,
       transparent 6px
     ),
@@ -220,7 +251,7 @@ textarea {
   margin-top: 2rem;
   padding: 1.5rem;
   border-left: var(--border);
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(var(--surface-rgb), 0.85);
   backdrop-filter: blur(6px);
   max-width: 640px;
 }
@@ -245,7 +276,7 @@ textarea {
   padding: 2rem;
   border: var(--border);
   box-shadow: var(--shadow);
-  background: #fff;
+  background: var(--surface);
 }
 
 .next-meetup__kicker {
@@ -275,7 +306,7 @@ textarea {
   font-family: var(--font-mono);
   border-left: var(--border);
   padding: 0.8rem 1rem;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(var(--surface-rgb), 0.8);
   width: fit-content;
 }
 
@@ -283,7 +314,7 @@ textarea {
   text-transform: uppercase;
   font-size: 0.7rem;
   letter-spacing: 0.08em;
-  color: #444;
+  color: var(--text-muted);
 }
 
 .next-meetup__value {
@@ -323,7 +354,7 @@ textarea {
   gap: 1rem;
   border: var(--border-thin);
   padding: 0.9rem;
-  background: #fff;
+  background: var(--surface);
   box-shadow: var(--shadow-sm);
   align-items: center;
 }
@@ -333,7 +364,7 @@ textarea {
   height: 90px;
   object-fit: cover;
   border: var(--border-thin);
-  background: #fff;
+  background: var(--surface);
 }
 
 .speaker-card__body {
@@ -362,8 +393,8 @@ textarea {
 
 
 .ticker {
-  background: #000;
-  color: #fff;
+  background: var(--ink);
+  color: var(--ink-contrast);
   border-top: var(--border);
   border-bottom: var(--border);
   overflow: hidden;
@@ -405,7 +436,7 @@ textarea {
   border-top: var(--border);
   border-left: var(--border);
   border-right: var(--border);
-  background: #fff;
+  background: var(--surface);
 }
 
 .main-grid__inner {
@@ -417,7 +448,7 @@ textarea {
 .manifesto {
   padding: 2.5rem 2rem;
   border-right: var(--border);
-  background-image: radial-gradient(#dcdcdc 1px, transparent 1px);
+  background-image: radial-gradient(var(--grid) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
@@ -461,7 +492,7 @@ textarea {
   padding: 1.5rem;
   border: var(--border);
   box-shadow: var(--shadow);
-  background: #fff;
+  background: var(--surface);
   position: relative;
   overflow: hidden;
 }
@@ -504,15 +535,15 @@ textarea {
 }
 
 .events {
-  background: #fff;
+  background: var(--surface);
 }
 
 .events__header {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: #000;
-  color: #fff;
+  background: var(--ink);
+  color: var(--ink-contrast);
   padding: 1.5rem 2rem;
   border-bottom: var(--border);
   display: flex;
@@ -599,7 +630,7 @@ textarea {
 .tag {
   padding: 0.2rem 0.6rem;
   border: var(--border-thin);
-  background: #fff;
+  background: var(--surface);
   font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 700;
@@ -610,21 +641,21 @@ textarea {
 .tag--sold {
   background: var(--accent);
   color: #fff;
-  border: 1px solid #000;
+  border: 1px solid var(--border-color);
   box-shadow: none;
 }
 
 .tag--past {
-  background: #000;
-  color: #fff;
-  border: 1px solid #000;
+  background: var(--ink);
+  color: var(--ink-contrast);
+  border: 1px solid var(--border-color);
   box-shadow: none;
 }
 
 .date-badge {
   padding: 0.5rem 0.7rem;
   border: var(--border-thin);
-  background: #fff;
+  background: var(--surface);
   box-shadow: var(--shadow-sm);
   font-family: var(--font-mono);
   text-align: right;
@@ -648,7 +679,7 @@ textarea {
   border-left: var(--border);
   padding: 0.6rem 1rem;
   font-family: var(--font-mono);
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(var(--surface-rgb), 0.7);
   backdrop-filter: blur(4px);
   width: fit-content;
 }
@@ -704,7 +735,7 @@ textarea {
   width: 34px;
   height: 34px;
   border: var(--border-thin);
-  background: #fff;
+  background: var(--surface);
   object-fit: cover;
 }
 
@@ -724,15 +755,15 @@ textarea {
   pointer-events: none;
   background-image: repeating-linear-gradient(
       90deg,
-      rgba(0, 0, 0, 0.15) 0,
-      rgba(0, 0, 0, 0.15) 1px,
+      rgba(var(--ink-rgb), 0.15) 0,
+      rgba(var(--ink-rgb), 0.15) 1px,
       transparent 1px,
       transparent 4px
     ),
     repeating-linear-gradient(
       0deg,
-      rgba(0, 0, 0, 0.12) 0,
-      rgba(0, 0, 0, 0.12) 2px,
+      rgba(var(--ink-rgb), 0.12) 0,
+      rgba(var(--ink-rgb), 0.12) 2px,
       transparent 2px,
       transparent 6px
     );
@@ -810,8 +841,8 @@ textarea {
 .newsletter-form input {
   padding: 1rem;
   border: var(--border);
-  background: #fff;
-  color: #000;
+  background: var(--surface);
+  color: var(--ink);
   font-family: var(--font-mono);
   font-size: 1.1rem;
   box-shadow: var(--shadow-sm);
@@ -821,12 +852,12 @@ textarea {
 .newsletter-form input:focus {
   outline: none;
   transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0 #000;
+  box-shadow: 2px 2px 0 var(--shadow-color);
 }
 
 .site-footer {
-  background: #000;
-  color: #fff;
+  background: var(--ink);
+  color: var(--ink-contrast);
   border-top: var(--border);
   padding: 3rem 0;
 }
@@ -847,7 +878,7 @@ textarea {
 
 .site-footer__meta {
   font-family: var(--font-mono);
-  color: #bdbdbd;
+  color: var(--text-muted-strong);
   font-size: 0.85rem;
 }
 
@@ -868,7 +899,7 @@ textarea {
 
 .meetup-hero {
   border-bottom: var(--border);
-  background: #fff;
+  background: var(--surface);
   position: relative;
   overflow: hidden;
 }
@@ -879,8 +910,8 @@ textarea {
   background-image: linear-gradient(120deg, rgba(255, 31, 31, 0.2), transparent 70%),
     repeating-linear-gradient(
       135deg,
-      rgba(0, 0, 0, 0.15) 0,
-      rgba(0, 0, 0, 0.15) 2px,
+      rgba(var(--ink-rgb), 0.15) 0,
+      rgba(var(--ink-rgb), 0.15) 2px,
       transparent 2px,
       transparent 6px
     );
@@ -920,7 +951,7 @@ textarea {
   text-transform: uppercase;
   border-left: var(--border);
   padding: 0.6rem 1rem;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(var(--surface-rgb), 0.75);
   width: fit-content;
 }
 
