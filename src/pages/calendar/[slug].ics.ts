@@ -64,7 +64,7 @@ export async function GET({ params, site }: APIContext) {
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//AI Meetup Collective//EN",
+    "PRODID:-//Zurich AI Club//EN",
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
     "BEGIN:VEVENT",
