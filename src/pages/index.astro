@@ -111,7 +111,16 @@ const inProgressHref = `${import.meta.env.BASE_URL}in-progress/`;
             )}
           </div>
           <h2 id="next-meetup-title" class="next-meetup__title">
-            {nextMeetupIsTbd ? "TBD" : nextMeetup.data.title}
+            {nextMeetupIsTbd ? (
+              "TBD"
+            ) : (
+              <a
+                class="next-meetup__title-link"
+                href={meetupHref(nextMeetup.slug)}
+              >
+                {nextMeetup.data.title}
+              </a>
+            )}
           </h2>
           <p class="next-meetup__why">
             {nextMeetupIsTbd ? "TBD" : nextMeetup.data.why}

@@ -292,6 +292,32 @@ textarea {
   margin: 0.6rem 0 1rem;
 }
 
+.next-meetup__title-link {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.next-meetup__title-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.12em;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.next-meetup__title-link:hover::after,
+.next-meetup__title-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
 .next-meetup__why {
   font-family: var(--font-mono);
   font-size: 1rem;

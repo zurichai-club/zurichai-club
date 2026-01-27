@@ -3,17 +3,27 @@ title: "Zürich AI | AI Tooling"
 date: 2026-02-24
 time: "17:30"
 location: "ETH AI Center, OAT X11, Andreasstrasse 5, 8092 Zürich"
-speaker: "TBA"
+speaker: "Panos Vagenas"
 tags:
   - Tooling
   - AI
 status: upcoming
 tbd: false
-why: "A focused meetup on AI tooling. Full agenda coming soon."
-quote: "Details to be announced."
+why: "Hands-on AI insights, practical learnings, and time to connect with the community."
+quote: "Learn how to fully utilize unstructured data in AI workflows."
 rsvpUrl: "https://www.meetup.com/zurich-ai-meetup/events/312878223/"
-speakers: []
+speakers:
+  - name: "Panos Vagenas"
+    role: "Docling Technical Steering Committee Member"
+    company: "IBM"
+    photo: "/images/speakers/panos-vagenas.png"
 ---
 
 ## Details
-More information will be announced on the Meetup event page.
+We’re excited to welcome Panos Vagenas as our first speaker for 2026.
+
+- Venue: ETH AI Center
+- Sponsored by: LumApps
+
+## Talk abstract
+Join this session from the core Docling team to learn how to fully utilize your unstructured data in your AI workflows, be it for RAG, information extraction or, ultimately, any document-related agent. We will go over Docling's main capabilities, covering how it can help address your enterprise needs, as well as giving a sneak peek of upcoming developments.
