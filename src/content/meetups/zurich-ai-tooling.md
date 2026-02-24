@@ -42,4 +42,4 @@ AXA insures millions of commercial properties worldwide. To strengthen risk awar
 
 ## Talk abstract: Rob Smith
 ### From Models to Systems: Running and Applying LLMs in Practice
-Abstract coming soon.
+Apertus is a fully open-source, multilingual foundation model built for open and reproducible AI. This talk introduces the model and shares practical lessons from deploying Apertus and other state-of-the-art models for internal users. The focus is on turning model weights into usable systems.
