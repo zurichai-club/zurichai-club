@@ -1,0 +1,22 @@
+{
+  "name": "zurichai-poster-generator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "preview": "tsx src/preview.ts",
+    "generate:single": "tsx src/generate.ts --template single-speaker --input data/single-speaker.example.json --output exports/single-speaker.png",
+    "generate:all": "tsx src/generate.ts --template all-speakers --input data/all-speakers.example.json --output exports/all-speakers.png",
+    "generate": "npm run generate:single && npm run generate:all",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "playwright": "^1.52.0",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "tsx": "^4.20.5",
+    "typescript": "^5.8.3"
+  }
+}

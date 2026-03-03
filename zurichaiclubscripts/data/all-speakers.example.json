@@ -1,0 +1,33 @@
+{
+  "meetupTitle": "Zurich AI Meetup",
+  "meetupUrl": "ZURICHAI.CLUB",
+  "eventDateLabel": "Feb 24th",
+  "eventTimeLabel": "17:30",
+  "eventHeadline": "3 Talks - Practical AI Tooling",
+  "eventSubheadline": "Applied demos and production stories from Zurich builders",
+  "speakers": [
+    {
+      "name": "Patrick Jayet",
+      "company": "AXA",
+      "photoUrl": "https://images.unsplash.com/photo-1615109398623-88346a601842?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "name": "Panos Vagenas",
+      "company": "Docling (IBM)",
+      "photoUrl": "https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "name": "Rob Smith",
+      "company": "Swiss AI",
+      "photoUrl": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=1200&q=80"
+    }
+  ],
+  "sponsors": [
+    {
+      "name": "lumapps"
+    },
+    {
+      "name": "ETH AI CENTER"
+    }
+  ]
+}
