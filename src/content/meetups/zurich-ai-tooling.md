@@ -7,7 +7,7 @@ speaker: "Panos Vagenas + Patrick Jayet + Rob Smith"
 tags:
   - Tooling
   - AI
-status: upcoming
+status: past
 tbd: false
 why: "Hands-on AI insights, practical learnings, and time to connect with the community."
 quote: "Learn how to fully utilize unstructured data in AI workflows."
