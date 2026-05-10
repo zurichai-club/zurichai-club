@@ -33,5 +33,13 @@ export const allSpeakersSchema = baseEventSchema.extend({
   speakers: z.array(speakerSchema).min(2).max(4)
 });
 
+export const announcementSchema = baseEventSchema.extend({
+  edition: z.string().min(1),
+  eventHeadline: z.string().min(1),
+  eventSubheadline: z.string().min(1),
+  ctaNote: z.string().default("RSVP details coming soon")
+});
+
 export type SingleSpeakerData = z.infer<typeof singleSpeakerSchema>;
 export type AllSpeakersData = z.infer<typeof allSpeakersSchema>;
+export type AnnouncementData = z.infer<typeof announcementSchema>;

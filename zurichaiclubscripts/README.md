@@ -92,3 +92,4 @@ npx tsx src/generate.ts \
 
 - Current templates are intentionally strict to keep brand consistency.
 - To create variants, duplicate template files and adjust layout constants only.
+- `photoUrl` and `logoUrl` accept hosted URLs, `file://` URLs, absolute paths, and repo-relative local image paths such as `data/2605/Firas_Cheaib.jpg`.

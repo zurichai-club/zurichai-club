@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { chromium } from "playwright";
+import { inlineLocalImageUrls } from "./inlineLocalImageUrls";
 import { isTemplateName, type TemplateName, renderPosterHtml } from "./renderPoster";
 
 async function main(): Promise<void> {
@@ -25,7 +26,7 @@ async function main(): Promise<void> {
   }
 
   const rawInput = await readFile(path.resolve(inputPath), "utf8");
-  const json = JSON.parse(rawInput) as unknown;
+  const json = await inlineLocalImageUrls(JSON.parse(rawInput) as unknown);
 
   const html = renderPosterHtml(template, json, { width, height });
 

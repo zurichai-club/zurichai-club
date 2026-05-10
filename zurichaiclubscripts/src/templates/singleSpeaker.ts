@@ -19,7 +19,7 @@ export function renderSingleSpeakerTemplate(data: SingleSpeakerData, size: Templ
       ${renderBrand(data.meetupTitle, data.meetupUrl)}
 
       <section class="speaker-copy">
-        <h1 class="speaker-heading">${escapeHtml(data.speaker.name)}</h1>
+        <h1 class="speaker-heading">${renderSpeakerHeading(data.speaker.name)}</h1>
         <div class="speaker-company-pill">${escapeHtml(data.speaker.company)}</div>
         <p class="talk-title">${escapeHtml(data.speaker.talkTitle)}</p>
       </section>
@@ -148,10 +148,10 @@ export function renderSingleSpeakerTemplate(data: SingleSpeakerData, size: Templ
       text-transform: uppercase;
       max-height: 178px;
       overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
       text-shadow: 3px 3px 0 rgba(0,0,0,0.15);
+    }
+    .single-speaker .speaker-heading-line {
+      display: block;
     }
 
     /* Company pill - accent red bg, white text */
@@ -352,6 +352,21 @@ export function renderSingleSpeakerTemplate(data: SingleSpeakerData, size: Templ
     width,
     height
   });
+}
+
+function renderSpeakerHeading(name: string): string {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (parts.length < 2) {
+    return `<span class="speaker-heading-line">${escapeHtml(name)}</span>`;
+  }
+
+  const givenNames = parts.slice(0, -1).join(" ");
+  const surname = parts.at(-1) ?? "";
+
+  return `
+    <span class="speaker-heading-line">${escapeHtml(givenNames)}</span>
+    <span class="speaker-heading-line">${escapeHtml(surname)}</span>
+  `;
 }
 
 function renderBrutalistSponsors(sponsors: SingleSpeakerData["sponsors"]): string {

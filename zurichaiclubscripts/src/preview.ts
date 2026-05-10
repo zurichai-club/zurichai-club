@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { chromium } from "playwright";
+import { inlineLocalImageUrls } from "./inlineLocalImageUrls";
 import { isTemplateName, type TemplateName, renderPosterHtml } from "./renderPoster";
 
 type PreviewPayload = {
@@ -31,7 +32,7 @@ async function main(): Promise<void> {
       if (req.method === "POST" && req.url === "/api/render") {
         const payload = await readJsonBody<PreviewPayload>(req);
         const { template, width, height, data } = normalizePayload(payload);
-        const html = renderPosterHtml(template, data, { width, height });
+        const html = renderPosterHtml(template, await inlineLocalImageUrls(data), { width, height });
         sendJson(res, 200, { html });
         return;
       }
@@ -39,7 +40,10 @@ async function main(): Promise<void> {
       if (req.method === "POST" && req.url === "/api/export") {
         const payload = await readJsonBody<PreviewPayload>(req);
         const { template, width, height, data } = normalizePayload(payload);
-        const html = renderPosterHtml(template, data, { width, height });
+        const html = renderPosterHtml(template, await inlineLocalImageUrls(data), {
+          width,
+          height
+        });
         const pngBuffer = await renderPng(html, width, height);
         const filename = `${template}-${Date.now()}.png`;
 
@@ -69,10 +73,12 @@ async function loadExamples(): Promise<TemplateExamples> {
   const cwd = process.cwd();
   const single = await readFile(path.resolve(cwd, "data/single-speaker.example.json"), "utf8");
   const all = await readFile(path.resolve(cwd, "data/all-speakers.example.json"), "utf8");
+  const announcement = await readFile(path.resolve(cwd, "data/announcement.json"), "utf8");
 
   return {
     "single-speaker": JSON.parse(single) as unknown,
-    "all-speakers": JSON.parse(all) as unknown
+    "all-speakers": JSON.parse(all) as unknown,
+    "announcement": JSON.parse(announcement) as unknown
   };
 }
 
@@ -293,6 +299,7 @@ function previewPage(examples: TemplateExamples): string {
           <select id="template">
             <option value="single-speaker">Single speaker announcement</option>
             <option value="all-speakers">All speakers lineup</option>
+            <option value="announcement">Event announcement</option>
           </select>
         </label>
 
