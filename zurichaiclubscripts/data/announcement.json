@@ -1,0 +1,24 @@
+{
+  "meetupTitle": "Zurich AI Meetup",
+  "meetupUrl": "ZURICHAI.CLUB",
+  "eventDateLabel": "May 26th",
+  "eventTimeLabel": "17:40",
+  "ctaLabel": "RSVP AT",
+  "speaker": {
+    "name": "Test",
+    "company": "ACP",
+    "talkTitle": "When Models Become the Commodity",
+    "photoUrl": "data/2605/Firas_Cheaib.jpg"
+  },
+  "sponsors": [
+    {
+      "name": "ACP",
+"logoUrl":"data/2605/acp.png"
+    },
+    {
+      "name": "TP",
+"logoUrl":"data/2605/tp.png"
+
+    }
+  ]
+}
