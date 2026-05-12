@@ -3,7 +3,7 @@ title: "Zürich AI | Agentic Loops"
 date: 2026-05-26
 time: "17:30"
 location: "Technopark Winterthur AG"
-speaker: "Firas Cheaib + 2 TBA speakers"
+speaker: "Firas Cheaib + Victor Chibotaru + 1 TBA speaker"
 tags:
   - Agents
   - AI
@@ -17,10 +17,10 @@ speakers:
     role: "When Models Become the Commodity"
     company: "ACP Engineering"
     photo: "/images/speakers/firas-cheaib.jpg"
-  - name: "TBA"
-    role: "Speaker to be announced"
-    company: "TBA"
-    photo: "/images/speakers/speaker-02.svg"
+  - name: "Victor Chibotaru"
+    role: "Shipping Faster, Drowning Sooner"
+    company: "LogicStar"
+    photo: "/images/speakers/victor-chibotaru.jpg"
   - name: "TBA"
     role: "Speaker to be announced"
     company: "TBA"
@@ -35,6 +35,9 @@ That foundation is what powers the current build of ACP-M, ACP's industrial IoT 
 
 Once that environment exists, the model becomes a commodity. What matters is enterprise processes and domain knowledge, not which model happens to be in fashion that quarter. Attendees will leave with a concrete way to assess whether their own environment is ready for agents at all, and what it takes to get there.
 
+AI ships your features faster than ever, but it also ships bugs faster than ever. Code got cheap, maintenance didn't: customer complaints stack up, Sentry alerts overflow, and triaging the pile is still as expensive as it ever was. Victor Chibotaru will show how LogicStar finds bugs across your Sentry, Jira and codebase, separates signal from noise, and helps your team fix issues that matter.
+
 - Talk: When Models Become the Commodity
+- Talk: Shipping Faster, Drowning Sooner
 - Date: Tuesday, May 26, 2026, 17:30–19:30 CEST
 - Venue: Technopark Winterthur AG
