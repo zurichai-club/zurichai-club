@@ -3,7 +3,7 @@ title: "Zürich AI | Agentic Loops"
 date: 2026-05-26
 time: "17:30"
 location: "Technopark Winterthur AG"
-speaker: "Firas Cheaib + Victor Chibotaru + 1 TBA speaker"
+speaker: "Firas Cheaib + Victor Chibotaru + Björn Jarisch + Egor Kraev"
 tags:
   - Agents
   - AI
@@ -21,10 +21,14 @@ speakers:
     role: "Shipping Faster, Drowning Sooner"
     company: "LogicStar"
     photo: "/images/speakers/victor-chibotaru.jpg"
-  - name: "TBA"
-    role: "Speaker to be announced"
-    company: "TBA"
-    photo: "/images/speakers/speaker-03.svg"
+  - name: "Björn Jarisch"
+    role: "Practical Multi-Repo Agentic Engineering"
+    company: "Singularitopian"
+    photo: "/images/speakers/bjorn-jarisch.jpg"
+  - name: "Egor Kraev"
+    role: "SLayer: the Dynamic, Agent-Native, Open Source Semantic Layer"
+    company: "Motley AI"
+    photo: "/images/speakers/egor-kraev.jpg"
 ---
 
 ## Details
@@ -37,7 +41,19 @@ Once that environment exists, the model becomes a commodity. What matters is ent
 
 AI ships your features faster than ever, but it also ships bugs faster than ever. Code got cheap, maintenance didn't: customer complaints stack up, Sentry alerts overflow, and triaging the pile is still as expensive as it ever was. Victor Chibotaru will show how LogicStar finds bugs across your Sentry, Jira and codebase, separates signal from noise, and helps your team fix issues that matter.
 
+## Lightning Talks
+
+**Björn Jarisch — Practical Multi-Repo Agentic Engineering**
+
+Practical techniques for reducing friction when doing agentic engineering across multiple repositories with VS Code and GitHub Copilot. Topics include concurrent agent sessions, GitHub MCP workflows, cross-repository changes, and using Git history to improve agent instructions over time.
+
+**Egor Kraev — SLayer: the Dynamic, Agent-Native, Open Source Semantic Layer**
+
+Most semantic layers were built for dashboards, not agents. SLayer is a lightweight, fully embeddable, open source semantic layer that lets agents define complex queries on the fly using natural semantics instead of multi-storey SQL. It has MCP, CLI, REST and Python APIs, flexible query-time expressions, memories tied to specific entities, and hybrid search over both memories and entities.
+
 - Talk: When Models Become the Commodity
 - Talk: Shipping Faster, Drowning Sooner
+- Lightning Talk: Practical Multi-Repo Agentic Engineering
+- Lightning Talk: SLayer: the Dynamic, Agent-Native, Open Source Semantic Layer
 - Date: Tuesday, May 26, 2026, 17:30–19:30 CEST
 - Venue: Technopark Winterthur AG
