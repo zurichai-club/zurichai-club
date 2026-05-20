@@ -1,0 +1,25 @@
+{
+  "meetupTitle": "Zurich AI Meetup",
+  "meetupUrl": "ZURICHAI.CLUB",
+  "eventHeadline": "LIGHTNING TALKS",
+  "eventSubheadline": "Agentic Loops",
+  "eventDateLabel": "MAY 26",
+  "eventTimeLabel": "17:30 CEST",
+  "sponsors": [
+    { "name": "ACP Engineering", "logoUrl": "./acp.png" },
+    { "name": "TD Synnex", "logoUrl": "./td-synnex.png" },
+    { "name": "Technopark", "logoUrl": "./tp.png" }
+  ],
+  "speakers": [
+    {
+      "name": "Björn Jarisch",
+      "company": "Singularitopian",
+      "photoUrl": "./Bjorn_Jarisch.jpg"
+    },
+    {
+      "name": "Egor Kraev",
+      "company": "Motley AI",
+      "photoUrl": "./Egor_Kraev.jpg"
+    }
+  ]
+}
