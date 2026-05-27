@@ -23,7 +23,7 @@ speakers:
     photo: "/images/speakers/victor-chibotaru.jpg"
   - name: "Björn Jarisch"
     role: "Practical Multi-Repo Agentic Engineering"
-    company: "Singularitopian"
+    company: "summerdawn.ai"
     photo: "/images/speakers/bjorn-jarisch.jpg"
   - name: "Egor Kraev"
     role: "SLayer: the Dynamic, Agent-Native, Open Source Semantic Layer"
