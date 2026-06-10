@@ -7,7 +7,7 @@ speaker: "Firas Cheaib + Victor Chibotaru + Björn Jarisch + Egor Kraev"
 tags:
   - Agents
   - AI
-status: upcoming
+status: past
 tbd: false
 why: "ACP Engineering shares what it takes to make LLMs useful in production: standardized codebases, typed data layers, and enterprise environments that are actually ready for agents."
 quote: "When models become the commodity."
