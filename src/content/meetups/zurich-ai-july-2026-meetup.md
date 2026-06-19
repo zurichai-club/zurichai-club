@@ -1,5 +1,5 @@
 ---
-title: "Zürich AI | July Meetup"
+title: "Zürich AI Meetup | Summer of Context"
 date: 2026-07-08
 time: "17:30"
 location: "Bleicherweg 72, 8002 Zürich | RIVIA"
@@ -12,6 +12,7 @@ status: upcoming
 tbd: false
 why: "Paulo Martins from GitLab will unpack why detecting and preventing indirect prompt injection is especially hard for coding agents."
 quote: "We tried to detect indirect prompt injection in coding agents. Here's what broke."
+rsvpUrl: "https://www.meetup.com/zurich-ai-meetup/events/315197024/"
 speakers:
   - name: "Paulo Martins"
     role: "We Tried to Detect Indirect Prompt Injection in Coding Agents. Here's What Broke"
