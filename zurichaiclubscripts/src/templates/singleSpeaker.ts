@@ -12,6 +12,7 @@ type TemplateSize = {
 
 export function renderSingleSpeakerTemplate(data: SingleSpeakerData, size: TemplateSize): string {
   const { width, height } = size;
+  const headingClass = needsCompactHeading(data.speaker.name) ? " speaker-heading--compact" : "";
 
   const body = `
     <main class="poster single-speaker">
@@ -19,7 +20,7 @@ export function renderSingleSpeakerTemplate(data: SingleSpeakerData, size: Templ
       ${renderBrand(data.meetupTitle, data.meetupUrl)}
 
       <section class="speaker-copy">
-        <h1 class="speaker-heading">${renderSpeakerHeading(data.speaker.name)}</h1>
+        <h1 class="speaker-heading${headingClass}">${renderSpeakerHeading(data.speaker.name)}</h1>
         <div class="speaker-company-pill">${escapeHtml(data.speaker.company)}</div>
         <p class="talk-title">${escapeHtml(data.speaker.talkTitle)}</p>
       </section>
@@ -152,6 +153,11 @@ export function renderSingleSpeakerTemplate(data: SingleSpeakerData, size: Templ
     }
     .single-speaker .speaker-heading-line {
       display: block;
+    }
+    .single-speaker .speaker-heading--compact {
+      font-size: 78px;
+      line-height: 0.9;
+      letter-spacing: -0.055em;
     }
 
     /* Company pill - accent red bg, white text */
@@ -352,6 +358,13 @@ export function renderSingleSpeakerTemplate(data: SingleSpeakerData, size: Templ
     width,
     height
   });
+}
+
+function needsCompactHeading(name: string): boolean {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  const longestPart = parts.reduce((longest, part) => Math.max(longest, part.length), 0);
+
+  return longestPart >= 11 || name.length >= 21;
 }
 
 function renderSpeakerHeading(name: string): string {

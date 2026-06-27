@@ -1,0 +1,68 @@
+{
+  "meetupTitle": "Zurich AI Meetup",
+  "meetupUrl": "ZURICHAI.CLUB",
+  "eventTitle": "Example AI Tooling Night",
+  "eventSubtitle": "Practical demos and production stories from local builders",
+  "eventDateLabel": "Example date",
+  "eventTimeLabel": "18:00",
+  "eventLocationLabel": "Zurich",
+  "backgroundImageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIwIDEwODAiPjxyZWN0IHdpZHRoPSIxOTIwIiBoZWlnaHQ9IjEwODAiIGZpbGw9IiNlMDVhNWEiLz48dGV4dCB4PSI1MCUiIHk9IjUyJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTk0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5FeGFtcGxlIE1lZXR1cDwvdGV4dD48L3N2Zz4=",
+  "sponsorUrls": [
+    "https://example.com/sponsor"
+  ],
+  "sponsorCatalog": {
+    "https://example.com/sponsor": {
+      "name": "Demo Sponsor",
+      "logoUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgMjQwIj48cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjI0MCIgZmlsbD0iI2ZmZmZmZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTIlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0MyIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzExMWM4NyI+RGVtbyBTcG9uc29yPC90ZXh0Pjwvc3ZnPg=="
+    }
+  },
+  "aboutMeetup": {
+    "title": "About the meetup",
+    "details": [
+      "Community-driven talks and demos",
+      "Example data only"
+    ],
+    "foundersTitle": "Organizers",
+    "founders": [
+      {
+        "name": "Organizer Example",
+        "role": "Community organizer",
+        "email": "organizer@example.com",
+        "contactUrl": "https://example.com/contact",
+        "photoUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgODAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0iIzExMWM4NyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTIlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNDQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPk9GPC90ZXh0Pjwvc3ZnPg==",
+        "qrImageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgZmlsbD0iI2ZmZmZmZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTIlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSI5MiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzExMWM4NyI+UVI8L3RleHQ+PC9zdmc+"
+      }
+    ]
+  },
+  "qrSlides": [
+    {
+      "title": "Join the community",
+      "subtitle": "Use this placeholder QR slide as a template for real event links.",
+      "url": "https://example.com/community",
+      "caption": "Example community link",
+      "placement": "beforeSpeakers",
+      "qrImageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgZmlsbD0iI2ZmZmZmZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTIlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSI5MiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzExMWM4NyI+UVI8L3RleHQ+PC9zdmc+"
+    },
+    {
+      "title": "Next meetup",
+      "subtitle": "Replace this with the next real event link when exporting production materials.",
+      "url": "https://example.com/next",
+      "caption": "Example next meetup link",
+      "qrImageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgZmlsbD0iI2ZmZmZmZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTIlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSI5MiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzExMWM4NyI+UVI8L3RleHQ+PC9zdmc+"
+    }
+  ],
+  "speakers": [
+    {
+      "name": "Alex Sample",
+      "company": "Example Labs",
+      "photoUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgODAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0iI2Y1ZjBlOCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTIlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNDQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxMTFjODciPkFTPC90ZXh0Pjwvc3ZnPg==",
+      "talkTitle": "Building useful AI tools"
+    },
+    {
+      "name": "Blair Kim",
+      "company": "Demo Systems",
+      "photoUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgODAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0iI2ZmZDYwMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTIlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNDQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMwMDAwMDAiPkJLPC90ZXh0Pjwvc3ZnPg==",
+      "talkTitle": "Production lessons from agent workflows"
+    }
+  ]
+}

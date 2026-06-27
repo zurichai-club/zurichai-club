@@ -8,6 +8,7 @@
     "generate:single": "tsx src/generate.ts --template single-speaker --input data/single-speaker.example.json --output exports/single-speaker.png",
     "generate:all": "tsx src/generate.ts --template all-speakers --input data/all-speakers.example.json --output exports/all-speakers.png",
     "generate:announcement": "tsx src/generate.ts --template announcement --input data/announcement.json --output exports/announcement.png --html-output exports/announcement.html",
+    "generate:welcome-deck": "tsx src/generateWelcomeDeck.ts --input data/welcome-deck.example.json --output exports/welcome-deck.html",
     "generate": "npm run generate:single && npm run generate:all && npm run generate:announcement",
     "typecheck": "tsc --noEmit"
   },

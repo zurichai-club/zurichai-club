@@ -8,6 +8,7 @@ type TemplateSize = {
 
 export function renderAnnouncementTemplate(data: AnnouncementData, size: TemplateSize): string {
   const { width, height } = size;
+  const sponsorCallout = renderSponsorCallout(data.sponsors);
 
   const body = `
     <main class="poster announcement">
@@ -21,12 +22,12 @@ export function renderAnnouncementTemplate(data: AnnouncementData, size: Templat
         <p>${escapeHtml(data.eventSubheadline)}</p>
       </section>
 
-      <div class="loop-graphic" aria-hidden="true">
-        <div class="loop-ring loop-ring-1"></div>
-        <div class="loop-ring loop-ring-2"></div>
-        <div class="loop-ring loop-ring-3"></div>
-        <div class="loop-ring loop-ring-4"></div>
-        <div class="loop-arrow">↻</div>
+      <div class="circle-graphic" aria-hidden="true">
+        <div class="circle-ring circle-ring-1"></div>
+        <div class="circle-ring circle-ring-2"></div>
+        <div class="circle-ring circle-ring-3"></div>
+        <div class="circle-ring circle-ring-4"></div>
+        <div class="circle-icon">✦</div>
       </div>
 
       <section class="event-chip">
@@ -34,13 +35,10 @@ export function renderAnnouncementTemplate(data: AnnouncementData, size: Templat
         <div class="event-value">${escapeHtml(data.eventDateLabel)} ${escapeHtml(data.eventTimeLabel)}</div>
       </section>
 
-      <section class="venue-callout">
-        <div class="venue-title">Venue<br/>Wanted</div>
-        <div class="venue-divider"></div>
-        <p class="venue-text">Your space. Our community. One great evening.</p>
-      </section>
+      ${sponsorCallout}
 
       <section class="cta-block">
+        <div class="cta-note">${escapeHtml(data.ctaNote)}</div>
         <div class="cta-url">${escapeHtml(data.meetupUrl)}</div>
       </section>
     </main>
@@ -189,51 +187,42 @@ export function renderAnnouncementTemplate(data: AnnouncementData, size: Templat
       text-shadow: 0 2px 12px rgba(0,0,0,0.55);
     }
 
-    /* ── Loop Graphic ── */
-    /* Container sits in the top-right, bleeds slightly over the split line
-       to create visual continuity between the two zones. */
-    .announcement .loop-graphic {
+    /* ── Circle Graphic ── */
+    .announcement .circle-graphic {
       position: absolute;
       right: 44px;
       top: 44px;
       width: 460px;
       height: 580px;
       z-index: 3;
-      /* Clip to the poster so rings don't escape the frame */
       overflow: visible;
     }
 
-    .announcement .loop-ring {
+    .announcement .circle-ring {
       position: absolute;
       border-radius: 50%;
     }
 
-    /* Outermost ring — white dashed border conveys orbital motion */
-    .announcement .loop-ring-1 {
+    .announcement .circle-ring-1 {
       width: 440px;
       height: 440px;
       top: 10px;
       left: 8px;
-      border: 0;
-      /* Dashed stroke via outline trick using box-shadow + border */
       border: 12px dashed rgba(255,255,255,0.55);
       background: transparent;
     }
 
-    /* Second ring — solid white, thinner, slightly offset for rotation feel */
-    .announcement .loop-ring-2 {
+    .announcement .circle-ring-2 {
       width: 340px;
       height: 340px;
       top: 60px;
       left: 52px;
       border: 7px solid rgba(255,255,255,0.85);
       background: transparent;
-      /* Small hard shadow makes it feel lifted off the red */
       box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
     }
 
-    /* Third ring — black border, no fill, tighter orbit */
-    .announcement .loop-ring-3 {
+    .announcement .circle-ring-3 {
       width: 240px;
       height: 240px;
       top: 110px;
@@ -243,8 +232,7 @@ export function renderAnnouncementTemplate(data: AnnouncementData, size: Templat
       opacity: 0.5;
     }
 
-    /* Innermost filled ring — yellow nucleus with brutal hard shadow */
-    .announcement .loop-ring-4 {
+    .announcement .circle-ring-4 {
       width: 160px;
       height: 160px;
       top: 150px;
@@ -254,8 +242,7 @@ export function renderAnnouncementTemplate(data: AnnouncementData, size: Templat
       box-shadow: 8px 8px 0 #000000;
     }
 
-    /* Rotation arrow — bold, centered inside the yellow nucleus */
-    .announcement .loop-arrow {
+    .announcement .circle-icon {
       position: absolute;
       top: 158px;
       left: 150px;
@@ -264,13 +251,12 @@ export function renderAnnouncementTemplate(data: AnnouncementData, size: Templat
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 96px;
+      font-size: 106px;
       font-weight: 900;
       color: #000000;
       line-height: 1;
       z-index: 4;
-      /* Slight rotation on the glyph itself adds kinetic feel */
-      transform: rotate(15deg);
+      transform: rotate(-8deg);
     }
 
     /* ── Event Chip ── */
@@ -329,7 +315,7 @@ export function renderAnnouncementTemplate(data: AnnouncementData, size: Templat
       letter-spacing: 0.1em;
     }
     .announcement .cta-url {
-      margin-top: 0;
+      margin-top: 8px;
       font-family: var(--font-heading);
       color: #ffffff;
       font-size: 72px;
@@ -345,8 +331,8 @@ export function renderAnnouncementTemplate(data: AnnouncementData, size: Templat
       text-shadow: 3px 3px 0 rgba(0,0,0,0.35);
     }
 
-    /* ── Venue Callout ── */
-    .announcement .venue-callout {
+    /* ── Sponsor Callout ── */
+    .announcement .sponsor-callout {
       position: absolute;
       right: 56px;
       top: 658px;
@@ -358,26 +344,41 @@ export function renderAnnouncementTemplate(data: AnnouncementData, size: Templat
       padding: 16px 20px 18px;
       transform: rotate(1.5deg);
     }
-    .announcement .venue-title {
+    .announcement .sponsor-label {
       font-family: var(--font-heading);
-      font-size: 56px;
-      line-height: 0.88;
+      font-size: 34px;
+      line-height: 0.95;
       font-weight: 800;
-      letter-spacing: -0.03em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: #e61f24;
     }
-    .announcement .venue-divider {
+    .announcement .sponsor-divider {
       height: 4px;
       background: #000000;
       margin: 14px 0;
     }
-    .announcement .venue-text {
-      font-family: var(--font-body);
-      font-size: 26px;
-      line-height: 1.25;
-      font-weight: 700;
+    .announcement .sponsor-logo-frame {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 94px;
+      background: #ffffff;
       color: #000000;
+    }
+    .announcement .sponsor-logo-frame img {
+      display: block;
+      width: 100%;
+      max-height: 84px;
+      object-fit: contain;
+    }
+    .announcement .sponsor-name-fallback {
+      font-family: var(--font-heading);
+      font-size: 46px;
+      line-height: 0.95;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
       margin: 0;
     }
   `;
@@ -389,4 +390,32 @@ export function renderAnnouncementTemplate(data: AnnouncementData, size: Templat
     width,
     height
   });
+}
+
+function renderSponsorCallout(sponsors: AnnouncementData["sponsors"]): string {
+  const sponsor = sponsors[0];
+
+  if (!sponsor) {
+    return `
+      <section class="sponsor-callout">
+        <div class="sponsor-label">Venue wanted</div>
+        <div class="sponsor-divider"></div>
+        <div class="sponsor-logo-frame">
+          <p class="sponsor-name-fallback">Your space</p>
+        </div>
+      </section>
+    `;
+  }
+
+  const mark = sponsor.logoUrl
+    ? `<img src="${escapeHtml(sponsor.logoUrl)}" alt="${escapeHtml(sponsor.name)}" />`
+    : `<p class="sponsor-name-fallback">${escapeHtml(sponsor.name)}</p>`;
+
+  return `
+    <section class="sponsor-callout">
+      <div class="sponsor-label">Sponsored by</div>
+      <div class="sponsor-divider"></div>
+      <div class="sponsor-logo-frame">${mark}</div>
+    </section>
+  `;
 }

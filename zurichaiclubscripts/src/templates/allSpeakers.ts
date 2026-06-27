@@ -11,20 +11,28 @@ type TemplateSize = {
   height: number;
 };
 
-const CARD_POSITIONS = [
+const DEFAULT_CARD_POSITIONS = [
   { left: 510, top: 80, width: 300, height: 340 },
   { left: 720, top: 400, width: 310, height: 340 },
   { left: 490, top: 660, width: 310, height: 320 },
   { left: 760, top: 720, width: 240, height: 260 }
 ];
 
+const FINAL_LINEUP_CARD_POSITIONS = [
+  { left: 510, top: 80, width: 300, height: 340 },
+  { left: 725, top: 330, width: 300, height: 315 },
+  { left: 500, top: 655, width: 250, height: 235 },
+  { left: 780, top: 655, width: 220, height: 210 }
+];
+
 const CARD_ROTATIONS = ["-2deg", "1.5deg", "-1deg", "2deg"];
 
 export function renderAllSpeakersTemplate(data: AllSpeakersData, size: TemplateSize): string {
   const { width, height } = size;
+  const cardPositions = data.speakers.length >= 4 ? FINAL_LINEUP_CARD_POSITIONS : DEFAULT_CARD_POSITIONS;
   const cards = data.speakers
     .map((speaker, idx) => {
-      const position = CARD_POSITIONS[idx];
+      const position = cardPositions[idx];
       if (!position) {
         return "";
       }
@@ -47,6 +55,7 @@ export function renderAllSpeakersTemplate(data: AllSpeakersData, size: TemplateS
       <section class="event-chip">
         <div class="event-label">Date + Time</div>
         <div class="event-value">${escapeHtml(data.eventDateLabel)} ${escapeHtml(data.eventTimeLabel)}</div>
+        ${data.eventLocationLabel ? `<div class="event-location">${escapeHtml(data.eventLocationLabel)}</div>` : ""}
       </section>
 
       ${cards}
@@ -178,11 +187,12 @@ export function renderAllSpeakersTemplate(data: AllSpeakersData, size: TemplateS
     .all-speakers .all-copy p {
       margin: 18px 0 0;
       font-family: var(--font-body);
-      font-size: 48px;
-      line-height: 1.12;
+      font-size: 38px;
+      line-height: 1.16;
       font-weight: 700;
       color: #ffffff;
-      max-height: 170px;
+      max-height: 134px;
+      padding-bottom: 10px;
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 3;
@@ -195,15 +205,23 @@ export function renderAllSpeakersTemplate(data: AllSpeakersData, size: TemplateS
       border: 6px solid #000000;
       box-shadow: 12px 12px 0 #000000;
       background: #d4a6a9;
+      display: flex;
+      flex-direction: column;
     }
     .all-speakers .speaker-card img {
       border-radius: 0;
+      flex: 1 1 0;
+      height: auto;
+      min-height: 0;
+      object-position: center center;
     }
     .all-speakers .speaker-overlay {
+      position: static;
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
       background: #000000;
       padding: 12px 16px 14px;
+      flex: 0 0 auto;
     }
     .all-speakers .speaker-card .speaker-name {
       font-size: 28px;
@@ -215,6 +233,18 @@ export function renderAllSpeakersTemplate(data: AllSpeakersData, size: TemplateS
       margin-top: 4px;
       line-height: 1;
       opacity: 0.85;
+    }
+    .all-speakers .card-2 .speaker-overlay,
+    .all-speakers .card-3 .speaker-overlay {
+      padding: 10px 12px 12px;
+    }
+    .all-speakers .card-2 .speaker-name,
+    .all-speakers .card-3 .speaker-name {
+      font-size: 24px;
+    }
+    .all-speakers .card-2 .speaker-company,
+    .all-speakers .card-3 .speaker-company {
+      font-size: 18px;
     }
 
     /* Card rotations for hand-placed feel */
@@ -228,7 +258,7 @@ export function renderAllSpeakersTemplate(data: AllSpeakersData, size: TemplateS
       position: absolute;
       left: 56px;
       top: 620px;
-      width: 400px;
+      width: 430px;
       z-index: 4;
       background: #FFD600;
       border: 6px solid #000000;
@@ -252,6 +282,17 @@ export function renderAllSpeakersTemplate(data: AllSpeakersData, size: TemplateS
       line-height: 0.94;
       letter-spacing: -0.03em;
       font-weight: 800;
+    }
+    .all-speakers .event-location {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 4px solid #000000;
+      font-family: var(--font-heading);
+      font-size: 27px;
+      line-height: 0.96;
+      letter-spacing: 0.02em;
+      font-weight: 800;
+      text-transform: uppercase;
     }
 
     /* ── CTA Block ── */

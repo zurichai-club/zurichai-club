@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const IMAGE_FIELD_NAMES = new Set(["photoUrl", "logoUrl"]);
+const IMAGE_FIELD_NAMES = new Set(["backgroundImageUrl", "photoUrl", "logoUrl"]);
 
 const MIME_TYPES: Record<string, string> = {
   ".avif": "image/avif",

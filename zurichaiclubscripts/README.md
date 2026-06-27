@@ -5,6 +5,7 @@ Starter project for generating consistent ZurichAI-style LinkedIn posters from J
 Included templates:
 - `single-speaker`: one person announcement
 - `all-speakers`: lineup card for 2-4 speakers
+- `welcome-deck`: fullscreen 16:9 HTML deck with a welcome slide and one intro slide per speaker
 
 ## Quick start
 
@@ -44,6 +45,14 @@ Generate all speakers:
 ```bash
 npm run generate:all
 ```
+
+Generate the fullscreen HTML welcome deck:
+
+```bash
+npm run generate:welcome-deck
+```
+
+This uses `data/welcome-deck.example.json`, which contains only placeholder example content and inline SVG images.
 
 Custom command:
 
@@ -85,11 +94,24 @@ npx tsx src/generate.ts \
 - `eventTimeLabel`
 - `eventHeadline`
 - `eventSubheadline`
+- `eventLocationLabel` (optional)
 - `speakers[]` (`name`, `company`, `photoUrl`)
 - `sponsors[]`
+
+`welcome-deck`:
+- `eventTitle`
+- `eventSubtitle` (optional)
+- `sponsorCatalogPath` or inline `sponsorCatalog`
+- `sponsorUrls[]` (URLs looked up in the sponsor catalog)
+- `aboutMeetup` optional about/founders slides (`title`, `details[]`, `foundersTitle`, `founders[]`)
+- `aboutMeetup.founders[]` (`name`, `role`, `email`, `photoUrl`, `contactUrl` optional, `qrImageUrl` optional)
+- `qrSlides[]` optional dynamic QR slides (`title`, `subtitle` optional, `url`, `caption` optional, `placement` optional, `qrImageUrl` optional)
+- `speakers[]` (`name`, `company`, `photoUrl`, `talkTitle` optional)
 
 ## Notes
 
 - Current templates are intentionally strict to keep brand consistency.
 - To create variants, duplicate template files and adjust layout constants only.
-- `photoUrl` and `logoUrl` accept hosted URLs, `file://` URLs, absolute paths, and repo-relative local image paths such as `data/2605/Firas_Cheaib.jpg`.
+- `photoUrl` and `logoUrl` accept hosted URLs, `file://` URLs, absolute paths, repo-relative local image paths, and inline `data:` URLs as shown in `data/welcome-deck.example.json`.
+- Welcome deck QR slides are generated from their configured `url` values with the local `qrencode` CLI when `qrImageUrl` is omitted. Founder contact QR codes are generated from `contactUrl`, or from `email` as a `mailto:` link when `contactUrl` is omitted.
+- The generated welcome deck HTML is presentation-ready: use arrow keys, Page Up/Down, space, Home/End, and `f` for fullscreen.
