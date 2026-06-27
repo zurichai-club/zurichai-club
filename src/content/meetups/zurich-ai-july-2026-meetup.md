@@ -11,7 +11,7 @@ tags:
   - AI
 status: upcoming
 tbd: false
-why: "Paulo Martins from GitLab will unpack why detecting and preventing indirect prompt injection is especially hard for coding agents, and Gianlorenzo Occhipinti from Exa will show how agentic search helps systems move beyond static knowledge cutoffs."
+why: "Paulo Martins from GitLab will unpack why detecting and preventing indirect prompt injection is especially hard for coding agents, Gianlorenzo Occhipinti from Exa will show how agentic search helps systems move beyond static knowledge cutoffs, and Marius Colacioiu from Norm will tell you all about dot-agents and how to make context durable for AI Agents."
 quote: "Prompt injection, agentic search, and what breaks when agents meet the open web."
 rsvpUrl: "https://www.meetup.com/zurich-ai-meetup/events/315197024/"
 speakers:
@@ -23,11 +23,15 @@ speakers:
     role: "Beyond the Knowledge Cutoff: Agentic Search in Practice"
     company: "Exa"
     photo: "/images/speakers/gianlorenzo-occhipinti.jpeg"
+  - name: "Marius Colacioiu"
+    role: "Your Repo Is the Memory: Durable Context for AI Coding Agents"
+    company: "Norm"
+    photo: "/images/speakers/marius-colacioiu.jpeg"
 ---
 
 ## Details
 
-One last AI meetup before summer holidays, with two talks on the practical edges of AI agents: Paulo Martins at GitLab on indirect prompt injection in coding agents, and Gianlorenzo Occhipinti at Exa on agentic search beyond static knowledge cutoffs.
+One last AI meetup before summer holidays, with three talks on the practical edges of AI agents: Paulo Martins at GitLab on indirect prompt injection in coding agents, Gianlorenzo Occhipinti at Exa on agentic search beyond static knowledge cutoffs, and Marius Colacioiu from Norm will tell you all about dot-agents and how to make context durable for AI Agents.
 
 ## Talk abstract: Paulo Martins
 
