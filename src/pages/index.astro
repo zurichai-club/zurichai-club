@@ -153,8 +153,13 @@ const inProgressHref = `${import.meta.env.BASE_URL}in-progress/`;
           </div>
           <div class="next-meetup__actions">
             {nextMeetup.data.status === "upcoming" && nextMeetupRsvp && (
-              <a class="button button--accent" href={nextMeetupRsvp}>
-                RSVP
+              <a
+                class="button button--accent"
+                href={nextMeetupRsvp}
+                target="_blank"
+                rel="noreferrer"
+              >
+                RSVP on Meetup
               </a>
             )}
             {!nextMeetupIsTbd && (
