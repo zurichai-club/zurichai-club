@@ -45,6 +45,12 @@ As a community, we are delegating a significant part of our development workflow
 
 Gianlorenzo Occhipinti from Exa will cover how agentic search helps AI systems retrieve current, relevant context beyond the model's static knowledge cutoff.
 
+## Talk abstract: Marius Colacioiu
+
+### Your Repo Is the Memory: Durable Context for AI Coding Agents
+
+Gianlorenzo Occhipinti from Norm will cover how AI coding agents are becoming useful fast, but they still do not know the local truth of your codebase. This talk shows how to make repo-local context durable so agents produce work that fits the project and humans can still understand, review, and maintain what gets merged.
+
 - Date: Wednesday, July 8, 2026, 17:30 CEST
 - Venue: Bleicherweg 72, 8002 Zürich | RIVIA
 - Hosted by: Rivia
