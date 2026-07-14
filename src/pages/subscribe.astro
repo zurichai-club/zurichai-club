@@ -1,0 +1,17 @@
+---
+import NewsletterForm from "../components/NewsletterForm.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Subscribe | Zurich AI Club" description="Subscribe to Zurich AI Club updates.">
+  <section class="cta subscribe-page">
+    <div class="cta__glow"></div>
+    <div class="cta__glow cta__glow--white"></div>
+    <div class="cta__inner">
+      <a class="back-link" href="/">&lt;- Back to home</a>
+      <h1 class="cta__title">Subscribe</h1>
+      <p class="cta__subtitle">Low-frequency, high-signal Zurich AI Club updates.</p>
+      <NewsletterForm />
+    </div>
+  </section>
+</BaseLayout>

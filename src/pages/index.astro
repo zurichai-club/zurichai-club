@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import NewsletterForm from "../components/NewsletterForm.astro";
 import { getCollection } from "astro:content";
 
 const meetups = (await getCollection("meetups")).sort(
@@ -44,7 +45,8 @@ const nextMeetupIsTbd = Boolean(nextMeetup?.data.tbd);
 const nextMeetupRsvp = nextMeetup?.data.rsvpUrl;
 const calendarHref = (slug) => `${import.meta.env.BASE_URL}calendar/${slug}.ics`;
 const meetupHref = (slug) => `${import.meta.env.BASE_URL}meetups/${slug}/`;
-const inProgressHref = `${import.meta.env.BASE_URL}in-progress/`;
+const privacyHref = `${import.meta.env.BASE_URL}privacy/`;
+const subscribeHref = `${import.meta.env.BASE_URL}subscribe/`;
 ---
 
 <BaseLayout>
@@ -381,10 +383,7 @@ const inProgressHref = `${import.meta.env.BASE_URL}in-progress/`;
         Singularity
       </h2>
       <p class="cta__subtitle">Subscribe to our low-frequency, high-signal newsletter.</p>
-      <form class="newsletter-form" action={inProgressHref} method="get">
-        <input type="email" name="email" placeholder="EMAIL_ADDRESS" required />
-        <button class="button button--invert" type="submit">Submit</button>
-      </form>
+      <NewsletterForm />
     </div>
   </section>
 
@@ -397,6 +396,8 @@ const inProgressHref = `${import.meta.env.BASE_URL}in-progress/`;
       <div class="site-footer__links">
         <a href="https://x.com/zurichaiclub">Twitter</a>
         <a href="https://www.linkedin.com/company/zürich-ai-meetup/">LinkedIn</a>
+        <a href={subscribeHref}>Subscribe</a>
+        <a href={privacyHref}>Privacy</a>
       </div>
     </div>
   </footer>

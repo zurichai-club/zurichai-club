@@ -881,6 +881,34 @@ textarea {
   box-shadow: 2px 2px 0 var(--shadow-color);
 }
 
+.newsletter-form__consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.newsletter-form__consent input {
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.15rem;
+  box-shadow: none;
+}
+
+.newsletter-form__honeypot {
+  position: absolute;
+  left: -9999px;
+}
+
+.newsletter-form__status {
+  min-height: 1.5em;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
 .site-footer {
   background: var(--ink);
   color: var(--ink-contrast);

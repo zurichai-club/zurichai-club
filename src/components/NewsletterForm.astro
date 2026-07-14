@@ -1,0 +1,47 @@
+---
+const newsletterEndpoint = "https://rbvl4ky27pvxpnfof7mgr77lei0abmow.lambda-url.eu-central-1.on.aws";
+const privacyHref = `${import.meta.env.BASE_URL}privacy/`;
+---
+
+<form class="newsletter-form" action={`${newsletterEndpoint}/subscribe`} method="post" data-newsletter-form>
+  <input type="email" name="email" placeholder="EMAIL_ADDRESS" autocomplete="email" required />
+  <label class="newsletter-form__consent">
+    <input type="checkbox" name="consentVersion" value="2026-07-14" required />
+    I agree to receive Zurich AI Club newsletter emails. <a href={privacyHref}>Privacy</a>
+  </label>
+  <input class="newsletter-form__honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+  <button class="button button--invert" type="submit">Submit</button>
+  <p class="newsletter-form__status" data-newsletter-status aria-live="polite"></p>
+</form>
+
+<script define:vars={{ newsletterEndpoint }}>
+  document.querySelectorAll("[data-newsletter-form]").forEach((form) => {
+    const status = form.querySelector("[data-newsletter-status]");
+    const submit = form.querySelector("button[type=submit]");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      submit.disabled = true;
+      status.textContent = "Submitting…";
+      try {
+        const response = await fetch(`${newsletterEndpoint}/subscribe`, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            email: formData.get("email"),
+            consentVersion: formData.get("consentVersion"),
+            website: formData.get("website")
+          })
+        });
+        const result = await response.json();
+        status.textContent = result.message || "Please try again later.";
+        if (result.ok) form.reset();
+      } catch {
+        status.textContent = "Unable to subscribe right now. Please try again later.";
+      } finally {
+        submit.disabled = false;
+      }
+    });
+  });
+</script>
