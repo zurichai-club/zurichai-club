@@ -170,6 +170,11 @@ const subscribeHref = `${import.meta.env.BASE_URL}subscribe/`;
                 Add to Calendar
               </a>
             )}
+            {!nextMeetupIsTbd && (
+              <a class="button button--invert" href={meetupHref(nextMeetup.slug)}>
+                Details
+              </a>
+            )}
           </div>
         </div>
         <div class="next-meetup__speakers">
