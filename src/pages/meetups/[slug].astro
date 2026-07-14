@@ -58,7 +58,7 @@ const calendarHref = `${import.meta.env.BASE_URL}calendar/${meetup.slug}.ics`;
         </div>
         <div class="meetup-actions">
           {showRsvp && !isSoldOut && (
-            <a class="button button--primary" href={rsvpUrl}>
+            <a class="button button--accent" href={rsvpUrl}>
               RSVP Now
               <svg
                 width="18"
@@ -114,6 +114,12 @@ const calendarHref = `${import.meta.env.BASE_URL}calendar/${meetup.slug}.ics`;
                   </div>
                   <p class="lineup-card__label">Talk</p>
                   <p class="lineup-card__title">{speaker.role}</p>
+                  {speaker.abstract && (
+                    <>
+                      <p class="lineup-card__label">Abstract</p>
+                      <p class="lineup-card__abstract">{speaker.abstract}</p>
+                    </>
+                  )}
                 </div>
               </article>
             ))}

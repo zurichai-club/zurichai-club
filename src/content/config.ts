@@ -22,7 +22,8 @@ const meetups = defineCollection({
           role: z.string(),
           company: z.string(),
           photo: z.string(),
-          companyUrl: z.string().optional()
+          companyUrl: z.string().optional(),
+          abstract: z.string().optional()
         })
       )
       .default([])

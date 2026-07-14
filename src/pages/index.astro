@@ -42,7 +42,6 @@ const nextSpeakerLine = nextMeetup
     : nextMeetup.data.speaker
   : "";
 const nextMeetupIsTbd = Boolean(nextMeetup?.data.tbd);
-const nextMeetupRsvp = nextMeetup?.data.rsvpUrl;
 const calendarHref = (slug) => `${import.meta.env.BASE_URL}calendar/${slug}.ics`;
 const meetupHref = (slug) => `${import.meta.env.BASE_URL}meetups/${slug}/`;
 const privacyHref = `${import.meta.env.BASE_URL}privacy/`;
@@ -151,14 +150,9 @@ const subscribeHref = `${import.meta.env.BASE_URL}subscribe/`;
             </div>
           </div>
           <div class="next-meetup__actions">
-            {nextMeetup.data.status === "upcoming" && nextMeetupRsvp && (
-              <a
-                class="button button--accent"
-                href={nextMeetupRsvp}
-                target="_blank"
-                rel="noreferrer"
-              >
-                RSVP on Meetup
+            {!nextMeetupIsTbd && (
+              <a class="button button--accent" href={meetupHref(nextMeetup.slug)}>
+                Details
               </a>
             )}
             {!nextMeetupIsTbd && (
@@ -168,11 +162,6 @@ const subscribeHref = `${import.meta.env.BASE_URL}subscribe/`;
                 download
               >
                 Add to Calendar
-              </a>
-            )}
-            {!nextMeetupIsTbd && (
-              <a class="button button--invert" href={meetupHref(nextMeetup.slug)}>
-                Details
               </a>
             )}
           </div>

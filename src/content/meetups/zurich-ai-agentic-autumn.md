@@ -17,14 +17,17 @@ speakers:
     role: "Agents: Lessons Learned"
     company: "CuratedAI"
     photo: "/images/speakers/speaker-01.svg"
+    abstract: "Lessons learned from building citation-first agent systems for legal workflows."
   - name: "Max Buckley"
     role: "Agentic RAG"
     company: "Google"
     photo: "/images/speakers/speaker-02.svg"
+    abstract: "Agentic RAG as a multi-step, tool-driven evolution of retrieval-augmented generation."
   - name: "Dirk Budke"
     role: "Workflow Automation vs Agentic AI"
     company: "mesoneer"
     photo: "/images/speakers/speaker-03.svg"
+    abstract: "How to blend structured workflow automation with autonomous agents in production."
 ---
 
 ## Overview
@@ -38,8 +41,3 @@ Hosted with mesoneer AG for a deep dive into agentic systems and production trad
 - 18:15-19:00 Max Buckley (Google) - Agentic RAG.
 - 19:00-19:45 Dirk Budke (mesoneer) - Where Workflow Automation Ends and Agentic AI Begins.
 - 19:45-21:00 Q&A and networking.
-
-## Abstracts
-- Lessons learned from building citation-first agent systems for legal workflows.
-- Agentic RAG as a multi-step, tool-driven evolution of retrieval-augmented generation.
-- How to blend structured workflow automation with autonomous agents in production.

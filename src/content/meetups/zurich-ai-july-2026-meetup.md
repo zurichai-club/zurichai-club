@@ -20,32 +20,18 @@ speakers:
     role: "We Tried to Detect Indirect Prompt Injection in Coding Agents. Here's What Broke"
     company: "GitLab"
     photo: "/images/speakers/paulo-martins.jpg"
+    abstract: >-
+      As a community, we are delegating a significant part of our development workflow to agents, and as the use cases grow, the risk of prompt injection keeps increasing—to the point that it made it to the top of the OWASP LLM Top 10. This talk explores why detecting and preventing prompt injection is particularly hard for coding agents.
   - name: "Gianlorenzo Occhipinti"
     role: "Beyond the Knowledge Cutoff: Agentic Search in Practice"
     company: "Exa"
     photo: "/images/speakers/gianlorenzo-occhipinti.jpeg"
+    abstract: >-
+      Agentic search helps AI systems retrieve current, relevant context beyond the model's static knowledge cutoff.
   - name: "Marius Colacioiu"
     role: "Your Repo Is the Memory: Durable Context for AI Coding Agents"
     company: "Norm"
     photo: "/images/speakers/marius-colacioiu.jpeg"
+    abstract: >-
+      AI coding agents are becoming useful fast, but they still do not know the local truth of your codebase. This talk shows how to make repo-local context durable so agents produce work that fits the project and humans can still understand, review, and maintain what gets merged.
 ---
-
-## Talk abstracts
-
-## Talk abstract: Paulo Martins
-
-### We Tried to Detect Indirect Prompt Injection in Coding Agents. Here's What Broke
-
-As a community, we are delegating a significant part of our development workflow to agents, and as the use cases grow, the risk of prompt injection keeps increasing - to the point that it made it to the top of the OWASP LLM Top 10. In this talk, I'll explore the concept of "detect and prevent prompt injection" and why it is particularly hard to do for coding agents.
-
-## Talk abstract: Gianlorenzo Occhipinti
-
-### Beyond the Knowledge Cutoff: Agentic Search in Practice
-
-Gianlorenzo Occhipinti from Exa will cover how agentic search helps AI systems retrieve current, relevant context beyond the model's static knowledge cutoff.
-
-## Talk abstract: Marius Colacioiu
-
-### Your Repo Is the Memory: Durable Context for AI Coding Agents
-
-Marius Colacioiu from Norm will cover how AI coding agents are becoming useful fast, but they still do not know the local truth of your codebase. This talk shows how to make repo-local context durable so agents produce work that fits the project and humans can still understand, review, and maintain what gets merged.

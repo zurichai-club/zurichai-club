@@ -18,26 +18,21 @@ speakers:
     role: "Docling Technical Steering Committee Member"
     company: "IBM"
     photo: "/images/speakers/panos-vagenas.png"
+    abstract: >-
+      Join this session from the core Docling team to learn how to fully utilize your unstructured data in AI workflows, be it for RAG, information extraction or, ultimately, any document-related agent. We will go over Docling's main capabilities, covering how it can help address your enterprise needs, as well as giving a sneak peek of upcoming developments.
   - name: "Patrick Jayet"
     role: "Global Data & AI (GDAI) Innovation Unit"
     company: "AXA"
     photo: "/images/speakers/patrick-jayet.png"
+    abstract: >-
+      AXA insures millions of commercial properties worldwide. To strengthen risk awareness across its insured portfolio and streamline Risk Engineering workflows, AXA's Global Data & AI innovation unit combines Earth Observation and computer vision to help risk engineers work at scale.
   - name: "Rob Smith"
     role: "Application Lead"
     company: "Apertus at SwissAI"
     photo: "/images/speakers/rob.jpg"
+    abstract: >-
+      Apertus is a multilingual, open-source foundation model built for open and reproducible AI. This talk shares practical lessons from deploying Apertus and other state-of-the-art models for internal users.
 ---
 
 ## Details
 We’re excited to welcome Panos Vagenas as our first speaker for 2026. Sponsored by LumApps.
-
-## Talk abstract: Panos Vagenas
-Join this session from the core Docling team to learn how to fully utilize your unstructured data in your AI workflows, be it for RAG, information extraction or, ultimately, any document-related agent. We will go over Docling's main capabilities, covering how it can help address your enterprise needs, as well as giving a sneak peek of upcoming developments.
-
-## Talk abstract: Patrick Jayet
-### Earth Observation for Enhanced Risk Awareness of Commercial Properties
-AXA insures millions of commercial properties worldwide. To strengthen risk awareness across its insured portfolio and streamline Risk Engineering workflows, AXA's Global Data & AI (GDAI) innovation unit has created some time ago a new initiative combining Earth Observation and computer vision. This talk will describe how the project was initiated and developed, and how it supports risk engineers by providing scalable, data-driven insights for commercial property risk assessment.
-
-## Talk abstract: Rob Smith
-### From Models to Systems: Running and Applying LLMs in Practice
-Apertus is a fully open-source, multilingual foundation model built for open and reproducible AI. This talk introduces the model and shares practical lessons from deploying Apertus and other state-of-the-art models for internal users. The focus is on turning model weights into usable systems.
