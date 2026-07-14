@@ -4,6 +4,7 @@ const meetups = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
+    theme: z.string().optional(),
     date: z.date(),
     time: z.string(),
     location: z.string(),

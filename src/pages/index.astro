@@ -124,9 +124,6 @@ const subscribeHref = `${import.meta.env.BASE_URL}subscribe/`;
               </a>
             )}
           </h2>
-          <p class="next-meetup__why">
-            {nextMeetupIsTbd ? "TBD" : nextMeetup.data.why}
-          </p>
           <div class="next-meetup__meta">
             <div>
               <div class="next-meetup__label">Date</div>
@@ -324,7 +321,6 @@ const subscribeHref = `${import.meta.env.BASE_URL}subscribe/`;
                 </div>
               </div>
 
-              <p class="event-card__why">{meetup.data.why}</p>
               <p class="event-card__quote">"{meetup.data.quote}"</p>
 
               {meetup.data.speakers.length > 0 && (
@@ -367,7 +363,7 @@ const subscribeHref = `${import.meta.env.BASE_URL}subscribe/`;
           ))
         ) : (
           <div class="event-card">
-            <p class="event-card__why">No previous meetups yet. Check back after the next event.</p>
+            <p>No previous meetups yet. Check back after the next event.</p>
           </div>
         )}
       </div>

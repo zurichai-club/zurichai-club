@@ -1,5 +1,6 @@
 ---
 title: "Zürich AI Meetup | Summer of Context"
+theme: "Summer of Context"
 date: 2026-07-08
 time: "17:30"
 location: "Bleicherweg 72, 8002 Zürich | RIVIA"
@@ -29,9 +30,7 @@ speakers:
     photo: "/images/speakers/marius-colacioiu.jpeg"
 ---
 
-## Details
-
-One last AI meetup before summer holidays, with three talks on the practical edges of AI agents: Paulo Martins at GitLab on indirect prompt injection in coding agents, Gianlorenzo Occhipinti at Exa on agentic search beyond static knowledge cutoffs, and Marius Colacioiu from Norm will tell you all about dot-agents and how to make context durable for AI Agents.
+## Talk abstracts
 
 ## Talk abstract: Paulo Martins
 
@@ -50,7 +49,3 @@ Gianlorenzo Occhipinti from Exa will cover how agentic search helps AI systems r
 ### Your Repo Is the Memory: Durable Context for AI Coding Agents
 
 Marius Colacioiu from Norm will cover how AI coding agents are becoming useful fast, but they still do not know the local truth of your codebase. This talk shows how to make repo-local context durable so agents produce work that fits the project and humans can still understand, review, and maintain what gets merged.
-
-- Date: Wednesday, July 8, 2026, 17:30 CEST
-- Venue: Bleicherweg 72, 8002 Zürich | RIVIA
-- Hosted by: Rivia

@@ -20,6 +20,8 @@ const formatDateLong = (date) =>
     year: "numeric"
   }).format(date);
 
+const theme = meetup.data.theme ?? meetup.data.title;
+
 const isSoldOut = meetup.data.status === "sold_out";
 const isPast = meetup.data.status === "past";
 const rsvpUrl = meetup.data.rsvpUrl;
@@ -40,15 +42,20 @@ const calendarHref = `${import.meta.env.BASE_URL}calendar/${meetup.slug}.ics`;
           ))}
           {isSoldOut && <span class="tag tag--sold">SOLD OUT</span>}
         </div>
-        <h1 class="meetup-hero__title">{meetup.data.title}</h1>
-        <div class="meetup-meta">
-          <span>{formatDateLong(meetup.data.date)}</span>
-          <span>{meetup.data.time}</span>
-          <span>{meetup.data.location}</span>
-          <span>{meetup.data.speaker}</span>
+        <div class="meetup-hero__eyebrow">Zürich AI Meetup presents</div>
+        <h1 class="meetup-hero__title">{theme}</h1>
+        <div class="meetup-facts" aria-label="Event details">
+          <div class="meetup-fact">
+            <span class="meetup-fact__label">When</span>
+            <span class="meetup-fact__value">
+              {formatDateLong(meetup.data.date)} · {meetup.data.time} CEST
+            </span>
+          </div>
+          <div class="meetup-fact">
+            <span class="meetup-fact__label">Where</span>
+            <span class="meetup-fact__value">{meetup.data.location}</span>
+          </div>
         </div>
-        <p class="meetup-why">{meetup.data.why}</p>
-        <p class="meetup-quote">"{meetup.data.quote}"</p>
         <div class="meetup-actions">
           {showRsvp && !isSoldOut && (
             <a class="button button--primary" href={rsvpUrl}>
@@ -78,43 +85,44 @@ const calendarHref = `${import.meta.env.BASE_URL}calendar/${meetup.slug}.ics`;
       </div>
     </header>
 
-    <div class="detail-content">
+    <div class="meetup-details container">
       {meetup.data.speakers.length > 0 && (
-        <section class="speaker-section">
-          <h2>Speakers</h2>
-          <div class="speaker-grid speaker-grid--detail">
+        <section class="lineup-section" aria-labelledby="lineup-title">
+          <div class="section-heading">
+            <span class="section-heading__kicker">The lineup</span>
+            <h2 id="lineup-title">Who is talking about what</h2>
+          </div>
+          <div class="lineup-grid">
             {meetup.data.speakers.map((speaker) => (
-              <div class="speaker-card">
+              <article class="lineup-card">
                 <img
-                  class="speaker-card__photo"
+                  class="lineup-card__photo"
                   src={speaker.photo}
                   alt={`${speaker.name} headshot`}
                   loading="lazy"
                 />
-                <div class="speaker-card__body">
-                  <div class="speaker-card__name">{speaker.name}</div>
-                  <div class="speaker-card__role">{speaker.role}</div>
-                  {speaker.companyUrl ? (
-                    <a
-                      class="speaker-card__company"
-                      href={speaker.companyUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                <div class="lineup-card__body">
+                  <div class="lineup-card__speaker">
+                    <h3>{speaker.name}</h3>
+                    {speaker.companyUrl ? (
+                      <a href={speaker.companyUrl} target="_blank" rel="noreferrer">
+                        {speaker.company}
+                      </a>
+                    ) : (
                       <span>{speaker.company}</span>
-                    </a>
-                  ) : (
-                    <div class="speaker-card__company">
-                      <span>{speaker.company}</span>
-                    </div>
-                  )}
+                    )}
+                  </div>
+                  <p class="lineup-card__label">Talk</p>
+                  <p class="lineup-card__title">{speaker.role}</p>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </section>
       )}
-      <Content />
+      <div class="detail-content">
+        <Content />
+      </div>
     </div>
   </article>
 </BaseLayout>

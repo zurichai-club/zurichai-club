@@ -1,5 +1,6 @@
 ---
 title: "Zürich AI | Agentic Loops"
+theme: "Agentic Loops"
 date: 2026-05-26
 time: "17:30"
 location: "Technopark Winterthur AG"
@@ -50,10 +51,3 @@ Practical techniques for reducing friction when doing agentic engineering across
 **Egor Kraev — SLayer: the Dynamic, Agent-Native, Open Source Semantic Layer**
 
 Most semantic layers were built for dashboards, not agents. SLayer is a lightweight, fully embeddable, open source semantic layer that lets agents define complex queries on the fly using natural semantics instead of multi-storey SQL. It has MCP, CLI, REST and Python APIs, flexible query-time expressions, memories tied to specific entities, and hybrid search over both memories and entities.
-
-- Talk: When Models Become the Commodity
-- Talk: Shipping Faster, Drowning Sooner
-- Lightning Talk: Practical Multi-Repo Agentic Engineering
-- Lightning Talk: SLayer: the Dynamic, Agent-Native, Open Source Semantic Layer
-- Date: Tuesday, May 26, 2026, 17:30–19:30 CEST
-- Venue: Technopark Winterthur AG

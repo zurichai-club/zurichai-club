@@ -1,5 +1,6 @@
 ---
 title: "Zürich AI | AI Tooling"
+theme: "AI Tooling"
 date: 2026-02-24
 time: "17:30"
 location: "ETH AI Center, OAT X11, Andreasstrasse 5, 8092 Zürich"
@@ -28,10 +29,7 @@ speakers:
 ---
 
 ## Details
-We’re excited to welcome Panos Vagenas as our first speaker for 2026.
-
-- Venue: ETH AI Center
-- Sponsored by: LumApps
+We’re excited to welcome Panos Vagenas as our first speaker for 2026. Sponsored by LumApps.
 
 ## Talk abstract: Panos Vagenas
 Join this session from the core Docling team to learn how to fully utilize your unstructured data in your AI workflows, be it for RAG, information extraction or, ultimately, any document-related agent. We will go over Docling's main capabilities, covering how it can help address your enterprise needs, as well as giving a sneak peek of upcoming developments.
