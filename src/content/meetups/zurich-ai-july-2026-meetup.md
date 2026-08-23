@@ -10,7 +10,7 @@ tags:
   - Search
   - Agents
   - AI
-status: upcoming
+status: past
 tbd: false
 why: "Paulo Martins from GitLab will unpack why detecting and preventing indirect prompt injection is especially hard for coding agents, Gianlorenzo Occhipinti from Exa will show how agentic search helps systems move beyond static knowledge cutoffs, and Marius Colacioiu from Norm will tell you all about dot-agents and how to make context durable for AI Agents."
 quote: "Prompt injection, agentic search, and what breaks when agents meet the open web."

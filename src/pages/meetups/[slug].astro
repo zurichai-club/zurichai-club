@@ -21,6 +21,9 @@ const formatDateLong = (date) =>
   }).format(date);
 
 const theme = meetup.data.theme ?? meetup.data.title;
+const time = meetup.data.endTime
+  ? `${meetup.data.time}–${meetup.data.endTime}`
+  : meetup.data.time;
 
 const isSoldOut = meetup.data.status === "sold_out";
 const isPast = meetup.data.status === "past";
@@ -48,7 +51,7 @@ const calendarHref = `${import.meta.env.BASE_URL}calendar/${meetup.slug}.ics`;
           <div class="meetup-fact">
             <span class="meetup-fact__label">When</span>
             <span class="meetup-fact__value">
-              {formatDateLong(meetup.data.date)} · {meetup.data.time} CEST
+              {formatDateLong(meetup.data.date)} · {time} CEST
             </span>
           </div>
           <div class="meetup-fact">

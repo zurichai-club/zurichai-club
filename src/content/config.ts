@@ -7,6 +7,7 @@ const meetups = defineCollection({
     theme: z.string().optional(),
     date: z.date(),
     time: z.string(),
+    endTime: z.string().optional(),
     location: z.string(),
     speaker: z.string(),
     tags: z.array(z.string()).default([]),

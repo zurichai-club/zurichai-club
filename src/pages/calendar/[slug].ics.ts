@@ -51,7 +51,9 @@ export async function GET({ params, site }: APIContext) {
   }
 
   const start = buildStartDate(meetup.data.date, meetup.data.time);
-  const end = new Date(start.getTime() + 2 * 60 * 60 * 1000);
+  const end = meetup.data.endTime
+    ? buildStartDate(meetup.data.date, meetup.data.endTime)
+    : new Date(start.getTime() + 2 * 60 * 60 * 1000);
   const descriptionParts = [meetup.data.why, meetup.data.quote].filter(Boolean);
   const description = descriptionParts.join("\n\n");
   const rsvpUrl = meetup.data.rsvpUrl ?? `/meetups/${meetup.slug}/`;

@@ -30,6 +30,11 @@ const formatDateLong = (date) =>
     year: "numeric"
   }).format(date);
 
+const formatMeetupTime = (meetup) =>
+  meetup.data.endTime
+    ? `${meetup.data.time}–${meetup.data.endTime}`
+    : meetup.data.time;
+
 const marqueeLabel = latestMeetup
   ? `LATEST EVENT: ${formatDateShort(latestMeetup.data.date)} // ${latestMeetup.data.title.toUpperCase()} // ${latestMeetup.data.location.toUpperCase()} //`
   : "NO EVENTS SCHEDULED //";
@@ -136,7 +141,7 @@ const subscribeHref = `${import.meta.env.BASE_URL}subscribe/`;
             <div>
               <div class="next-meetup__label">Time</div>
               <div class="next-meetup__value">
-                {nextMeetupIsTbd ? "TBD" : nextMeetup.data.time}
+                {nextMeetupIsTbd ? "TBD" : formatMeetupTime(nextMeetup)}
               </div>
             </div>
             <div>
@@ -290,7 +295,7 @@ const subscribeHref = `${import.meta.env.BASE_URL}subscribe/`;
                 </div>
                 <div class="date-badge">
                   <div class="date-badge__date">{formatDateShort(meetup.data.date)}</div>
-                  <div class="date-badge__time">{meetup.data.time}</div>
+                  <div class="date-badge__time">{formatMeetupTime(meetup)}</div>
                 </div>
               </div>
 
