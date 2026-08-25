@@ -4,7 +4,7 @@ theme: "Agentic Chains"
 date: 2026-09-29
 time: "17:30"
 endTime: "20:30"
-location: "Mühle Tiefenbrunnen, Dufourstr., Zürich"
+location: "Kulturareal Mühle Tiefenbrunnen"
 speaker: "Speakers to be announced"
 tags:
   - Agents
@@ -22,4 +22,4 @@ speakers: []
 The speaker lineup and agenda will be announced.
 
 - Date: Tuesday, September 29, 2026, 17:30–20:30 CEST
-- Venue: Mühle Tiefenbrunnen, Dufourstr., Zürich
+- Venue: Kulturareal Mühle Tiefenbrunnen
