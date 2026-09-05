@@ -1,0 +1,19 @@
+---
+interface Props { sponsors: { name: string; logo?: string }[]; }
+const { sponsors = [] } = Astro.props;
+---
+{sponsors.length > 0 && (
+  <section class="meetup-sponsors container" aria-label="Meetup sponsors">
+    <p>WITH SUPPORT FROM</p>
+    <ul>{sponsors.map(sponsor => (
+      <li>{sponsor.logo ? <img src={sponsor.logo} alt={sponsor.name} loading="lazy" /> : <span>{sponsor.name}</span>}</li>
+    ))}</ul>
+  </section>
+)}
+<style>
+  .meetup-sponsors { padding-block: 2rem; }
+  p { font: 700 .8rem monospace; letter-spacing: .12em; }
+  ul { display: flex; flex-wrap: wrap; gap: 1rem; list-style: none; padding: 0; }
+  li { display: flex; align-items: center; justify-content: center; width: 180px; height: 92px; padding: 1rem; background: white; border: 2px solid black; color: black; }
+  img { max-width: 100%; max-height: 100%; object-fit: contain; }
+</style>
