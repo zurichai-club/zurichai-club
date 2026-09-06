@@ -1,6 +1,6 @@
 ---
-title: "Zürich AI Meetup | Agentic Chains"
-theme: "Agentic Chains"
+title: "Secure Orchestration from Agentic Chains"
+theme: "Secure Orchestration from Agentic Chains"
 date: 2026-09-29
 time: "17:30"
 endTime: "20:30"
