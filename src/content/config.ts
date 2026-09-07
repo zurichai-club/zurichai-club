@@ -16,6 +16,7 @@ const meetups = defineCollection({
     why: z.string(),
     quote: z.string(),
     rsvpUrl: z.string().optional(),
+    sponsors: z.array(z.object({ name: z.string(), logo: z.string().optional() })).default([]),
     speakers: z
       .array(
         z.object({
