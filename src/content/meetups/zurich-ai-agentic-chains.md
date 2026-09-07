@@ -11,8 +11,8 @@ tags:
 - AI
 status: upcoming
 tbd: false
-why: The next Zürich AI Meetup explores agentic chains. See the speaker lineup below.
-quote: Agentic chains. See the speaker lineup below.
+why: The next Zürich AI Meetup explores Secure Orchestration. See the speaker lineup below.
+quote: Secure Orchestration. See the speaker lineup below.
 rsvpUrl: https://www.meetup.com/zurich-ai-meetup/events/316103725/
 speakers:
 - name: Steffen Hausmann
