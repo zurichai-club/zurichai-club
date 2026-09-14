@@ -21,7 +21,7 @@ speakers:
   photo: /images/speakers/zurich-ai-agentic-chains/6a9d1c930dada9b7115b20c9.png
 - name: Edgar Kussberg
   company: Sonar
-  role: Now we keep agents honest.
+  role: We used to find bugs. Now we keep agents honest
   photo: /images/speakers/zurich-ai-agentic-chains/6aa7bcce53a8284a015c2ea5.png
 sponsors:
 - name: Auth0
