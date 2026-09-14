@@ -5,7 +5,7 @@ date: 2026-09-29
 time: '17:30'
 endTime: '20:30'
 location: Kulturareal Mühle Tiefenbrunnen
-speaker: Steffen Hausmann
+speaker: Steffen Hausmann + Edgar Kussberg
 tags:
 - Agents
 - AI
@@ -19,6 +19,10 @@ speakers:
   company: LangChain
   role: 'How We Built it: LangSmith Engine'
   photo: /images/speakers/zurich-ai-agentic-chains/6a9d1c930dada9b7115b20c9.png
+- name: Edgar Kussberg
+  company: Sonar
+  role: Now we keep agents honest.
+  photo: /images/speakers/zurich-ai-agentic-chains/6aa7bcce53a8284a015c2ea5.png
 sponsors:
 - name: Auth0
   logo: /images/sponsors/zurich-ai-agentic-chains/sponsor-auth0.jpg
