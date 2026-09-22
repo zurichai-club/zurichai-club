@@ -1,5 +1,4 @@
 ---
-import SponsorStrip from "../components/SponsorStrip.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import NewsletterForm from "../components/NewsletterForm.astro";
 import { getCollection } from "astro:content";
@@ -217,8 +216,6 @@ const subscribeHref = `${import.meta.env.BASE_URL}subscribe/`;
       </div>
     </section>
   )}
-
-  {nextMeetup && <SponsorStrip sponsors={nextMeetup.data.sponsors} />}
 
   <section class="main-grid">
     <div class="main-grid__inner">
